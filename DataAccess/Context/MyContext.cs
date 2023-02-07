@@ -16,6 +16,9 @@ namespace DataAccess.Context
                  optionsBuilder.UseSqlServer(connectionString: @"Data Source=94.73.170.45;Initial Catalog=u9916590_db588;uid=u9916590_user588;pwd=Crf.Digital134!!;Integrated Security=false;MultipleActiveResultSets=True;");
         }
 
+
+
+
              
         public DbSet<AppUser> AppUsers { get; set; }
   
