@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repositories.Interfaces
 {
-    public interface IProjeTanimRepository : IEntityRepository<ProjeTanim>
+    public interface IAppUserRepository : IEntityRepository<AppUser>
     {
-        List<ProjeTanimDto> GetListProje();
+        //List<KullaniciDto> GetListKullanici();
     }
 }

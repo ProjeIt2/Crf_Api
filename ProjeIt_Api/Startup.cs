@@ -37,29 +37,12 @@ namespace ProjeIt_Api
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ProjeIt_Api", Version = "v1" });
             });
             #region ServiceAndRepository
-            services.AddScoped<IHastaUzmanlikRepository, HastaUzmanlikRepository>();
-            services.AddScoped<IHastaUzmanlikService, HastaUzmanlikService>();
+  
 
-            services.AddScoped<IKanserTurRepository, KanserTurRepository>();
-            services.AddScoped<IKanserTurService, KanserTurService>();
+            services.AddScoped<IAppUserRepository, AppUserRepository>();
+            services.AddScoped<IAppUserService, AppUserService>();
 
-            services.AddScoped<IMateryalTipRepository, MateryalTipRepository>();
-            services.AddScoped<IMateryalTipService, MateryalTipService>();
-
-            services.AddScoped<IRolRepository, RolRepository>();
-            services.AddScoped<IRolService, RolService>();
-
-            services.AddScoped<ISponsorRepository, SponsorRepository>();
-            services.AddScoped<ISponsorService, SponsorService>();
-
-            services.AddScoped<ITüpCinsRepository, TüpCinsRepository>();
-            services.AddScoped<ITüpCinsService, TüpCinsService>();
-
-            services.AddScoped<IKullaniciRepository, KullaniciRepository>();
-            services.AddScoped<IKullaniciService, KullaniciService>();
-
-            services.AddScoped<IProjeTanimRepository, ProjeTanimRepository>();
-            services.AddScoped<IProjeTanimService, ProjeTanimService>();
+      
             #endregion
         }
 
