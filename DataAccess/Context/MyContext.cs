@@ -13,7 +13,7 @@ namespace DataAccess.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {     
-                 optionsBuilder.UseSqlServer(connectionString: @"Data Source=94.73.170.45;Initial Catalog=u9916590_db588;uid=u9916590_user588;pwd=Crf.Digital134!!;Integrated Security=false;MultipleActiveResultSets=True;");
+                 optionsBuilder.UseSqlServer(connectionString: @"Data Source=94.73.170.34;Initial Catalog=u0993226_dbD8A;uid=u0993226_userD8A;pwd=Crf.Digital134!!;Integrated Security=false;MultipleActiveResultSets=True;");
         }
 
 
