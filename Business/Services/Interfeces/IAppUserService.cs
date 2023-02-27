@@ -12,6 +12,7 @@ namespace Business.Services.Interfeces
     {
         AppUser GetById(int Id);
         List<AppUser> GetList();
+        List<AppUser> GetActivesById(int CompanyID);
         AppUser Login(string KullaniciAdi, string Sifre);
         //List<KullaniciDto> GetListKullanici();
         string Add(AppUser kullanici);

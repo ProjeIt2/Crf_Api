@@ -11,10 +11,10 @@ namespace ProjeIt_Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class AppUserController : ControllerBase
+    public class FormController : ControllerBase
     {
-        private readonly IAppUserService _appUserService;
-        public AppUserController(IAppUserService appUserService)
+        private readonly IFormService _appUserService;
+        public FormController(IFormService appUserService)
         {
             _appUserService = appUserService;
         }
@@ -24,20 +24,13 @@ namespace ProjeIt_Api.Controllers
         {
             return Ok(_appUserService.GetList());
         }
-        [HttpGet("Login")]
-        public IActionResult Login(string UserName, string Password)
+        [HttpGet("GetListForms")]
+        public IActionResult GetListForms()
         {
 
-            return Ok(_appUserService.Login(UserName, Password));
+            return Ok(_appUserService.GetListForms());
+
         }
-
-        //[HttpGet("GetListKullanici")]
-        //public IActionResult GetListKullanici()
-        //{
-
-        //    return Ok(_appUserService.GetListKullanici());
-
-        //}
         [HttpGet("GetActivesById")]
         public IActionResult GetActivesById(int CompanyID)
         {
@@ -50,19 +43,19 @@ namespace ProjeIt_Api.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add(AppUser appUser)
+        public IActionResult Add(Form appUser)
         {
             appUser.CreatedDate = DateTime.Now;
             appUser.Status = 1;
             return Ok(_appUserService.Add(appUser));
         }
         [HttpPost("update")]
-        public IActionResult Update(AppUser appUser)
+        public IActionResult Update(Form appUser)
         {
             return Ok(_appUserService.Update(appUser));
         }
         [HttpPost("delete")]
-        public IActionResult Delete(AppUser appUser)
+        public IActionResult Delete(Form appUser)
         {
             return Ok(_appUserService.Delete(appUser));
         }

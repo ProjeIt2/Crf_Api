@@ -11,58 +11,39 @@ using System.Threading.Tasks;
 
 namespace Business.Services
 {
-    public class AppUserService : IAppUserService
+    public class FormService : IFormService
     {
-        private IAppUserRepository _kullaniciRepository;
-        public AppUserService(IAppUserRepository kullaniciRepository)
+        private IFormRepository _kullaniciRepository;
+        public FormService(IFormRepository kullaniciRepository)
         {
             _kullaniciRepository = kullaniciRepository;
         }
 
-        public AppUser GetById(int Id)
+        public Form GetById(int Id)
         {
             return _kullaniciRepository.Get(a => a.ID == Id);
         }
-        public List<AppUser> GetList()
+        public List<Form> GetList()
         {
             return _kullaniciRepository.GetList().ToList();
         }
-        public List<AppUser> GetActivesById(int CompanyID)
+        public List<FormListVM> GetListForms()
+        {
+            return new List<FormListVM>(_kullaniciRepository.GetListForms().ToList());
+        }
+        public List<Form> GetActivesById(int CompanyID)
         {
             return _kullaniciRepository.GetList(x=>x.CompanyID==CompanyID&&x.Status!=3).ToList();
         }
-        public AppUser Login(string UserName, string Password)
-        {
-            var User = _kullaniciRepository.Get(a => a.UserName.ToLower() == UserName.ToLower());
-            if (User!=null)
-            {
-                if (Dantex.DeCrypt(User.Password)== Password)
-                {
-                    return User;
-                }
-                else
-                {
-                    return null;
-                }
-
-            }
-            else
-            {
-                return null;
-            }
-        }
-        //public List<KullaniciDto> GetListKullanici()
-        //{
-        //    return new List<KullaniciDto>(_kullaniciRepository.GetListKullanici().ToList());
-        //}
-        public string Add(AppUser appUser)
+  
+        public string Add(Form appUser)
         {
             appUser.CreatedDate = DateTime.Now;
 
             _kullaniciRepository.Add(appUser);
             return "Ok";
         }
-        public string Update(AppUser appUser)
+        public string Update(Form appUser)
         {
             var User = _kullaniciRepository.Get(a => a.ID== appUser.ID);
             appUser.CreatedDate = User.CreatedDate;
@@ -71,7 +52,7 @@ namespace Business.Services
             _kullaniciRepository.Update(appUser);
             return "Ok";
         }
-        public string Delete(AppUser appUser)
+        public string Delete(Form appUser)
         {
             var User = _kullaniciRepository.Get(a => a.ID == appUser.ID);
             appUser.CreatedDate = User.CreatedDate;

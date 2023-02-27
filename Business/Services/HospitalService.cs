@@ -11,58 +11,39 @@ using System.Threading.Tasks;
 
 namespace Business.Services
 {
-    public class AppUserService : IAppUserService
+    public class HospitalService : IHospitalService
     {
-        private IAppUserRepository _kullaniciRepository;
-        public AppUserService(IAppUserRepository kullaniciRepository)
+        private IHospitalRepository _kullaniciRepository;
+        public HospitalService(IHospitalRepository kullaniciRepository)
         {
             _kullaniciRepository = kullaniciRepository;
         }
 
-        public AppUser GetById(int Id)
+        public Hospital GetById(int Id)
         {
             return _kullaniciRepository.Get(a => a.ID == Id);
         }
-        public List<AppUser> GetList()
+        public List<Hospital> GetList()
         {
             return _kullaniciRepository.GetList().ToList();
         }
-        public List<AppUser> GetActivesById(int CompanyID)
+        public List<Hospital> GetActivesById(int CompanyID)
         {
             return _kullaniciRepository.GetList(x=>x.CompanyID==CompanyID&&x.Status!=3).ToList();
         }
-        public AppUser Login(string UserName, string Password)
-        {
-            var User = _kullaniciRepository.Get(a => a.UserName.ToLower() == UserName.ToLower());
-            if (User!=null)
-            {
-                if (Dantex.DeCrypt(User.Password)== Password)
-                {
-                    return User;
-                }
-                else
-                {
-                    return null;
-                }
 
-            }
-            else
-            {
-                return null;
-            }
-        }
         //public List<KullaniciDto> GetListKullanici()
         //{
         //    return new List<KullaniciDto>(_kullaniciRepository.GetListKullanici().ToList());
         //}
-        public string Add(AppUser appUser)
+        public string Add(Hospital appUser)
         {
             appUser.CreatedDate = DateTime.Now;
 
             _kullaniciRepository.Add(appUser);
             return "Ok";
         }
-        public string Update(AppUser appUser)
+        public string Update(Hospital appUser)
         {
             var User = _kullaniciRepository.Get(a => a.ID== appUser.ID);
             appUser.CreatedDate = User.CreatedDate;
@@ -71,7 +52,7 @@ namespace Business.Services
             _kullaniciRepository.Update(appUser);
             return "Ok";
         }
-        public string Delete(AppUser appUser)
+        public string Delete(Hospital appUser)
         {
             var User = _kullaniciRepository.Get(a => a.ID == appUser.ID);
             appUser.CreatedDate = User.CreatedDate;
