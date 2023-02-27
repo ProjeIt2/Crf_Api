@@ -13,19 +13,19 @@ namespace Business.Services
 {
     public class AppUserService : IAppUserService
     {
-        private IAppUserRepository _kullaniciRepository;
+        private IAppUserRepository _appUserRepository;
         public AppUserService(IAppUserRepository kullaniciRepository)
         {
-            _kullaniciRepository = kullaniciRepository;
+            _appUserRepository = kullaniciRepository;
         }
 
         public AppUser GetById(int Id)
         {
-            return _kullaniciRepository.Get(a => a.ID == Id);
+            return _appUserRepository.Get(a => a.ID == Id);
         }
         public List<AppUser> GetList()
         {
-            return _kullaniciRepository.GetList().ToList();
+            return _appUserRepository.GetList().ToList();
         }
         public List<AppUser> GetActivesById(int CompanyID)
         {
@@ -53,7 +53,7 @@ namespace Business.Services
         }
         //public List<KullaniciDto> GetListKullanici()
         //{
-        //    return new List<KullaniciDto>(_kullaniciRepository.GetListKullanici().ToList());
+        //    return new List<KullaniciDto>(_appUserRepository.GetListKullanici().ToList());
         //}
         public string Add(AppUser appUser)
         {
@@ -73,11 +73,6 @@ namespace Business.Services
         }
         public string Delete(AppUser appUser)
         {
-            var User = _kullaniciRepository.Get(a => a.ID == appUser.ID);
-            appUser.CreatedDate = User.CreatedDate;
-            appUser.ModifiedDate = User.ModifiedDate;
-            appUser.DeletedDate = DateTime.Now;
-            appUser.Status = 3;
             _kullaniciRepository.Delete(appUser);
             return "Ok";
         }
