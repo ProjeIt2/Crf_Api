@@ -29,6 +29,8 @@ namespace DataAccess.Context
         public DbSet<ClinicalDiagnosis> ClinicalDiagnosis { get; set; }
        public DbSet<PatientInformation> PatientInformations { get; set; }
         public DbSet<Country> Countries { get; set; }
+        public DbSet<Job> Jobs { get; set; }
+        public DbSet<SocialLife> SocialLives { get; set; }
 
         //public DbSet<FormListVM> FormVMQuery { get; set; }
 

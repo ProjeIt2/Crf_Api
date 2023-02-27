@@ -37,7 +37,7 @@ namespace ProjeIt_Api
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ProjeIt_Api", Version = "v1" });
             });
             #region ServiceAndRepository
-  
+
 
             services.AddScoped<IAppUserRepository, AppUserRepository>();
             services.AddScoped<IAppUserService, AppUserService>();
@@ -55,9 +55,12 @@ namespace ProjeIt_Api
             services.AddScoped<IClinicalDiagnosisService, ClinicalDiagnosisService>();
             services.AddScoped<IPatientInformationRepository, PatientInformationRepository>();
             services.AddScoped<IPatientInformationService, PatientInformationService>();
-              services.AddScoped<ICountryRepository, CountryRepository>();
+            services.AddScoped<ICountryRepository, CountryRepository>();
             services.AddScoped<ICountryService, CountryService>();
-
+            services.AddScoped<IJobRepository, JobRepository>();
+            services.AddScoped<IJobService, JobService>();
+            services.AddScoped<ISocialLifeRepository, SocialLifeRepository>();
+            services.AddScoped<ISocialLifeService, SocialLifeService>();
             #endregion
         }
 
@@ -66,11 +69,11 @@ namespace ProjeIt_Api
         {
             //if (env.IsDevelopment())
             //{  }
-                app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ProjeIt_Api v1"));
-          
-      
+            app.UseDeveloperExceptionPage();
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ProjeIt_Api v1"));
+
+
             app.UseHttpsRedirection();
 
             app.UseRouting();

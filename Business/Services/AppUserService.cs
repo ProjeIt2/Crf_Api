@@ -29,11 +29,11 @@ namespace Business.Services
         }
         public List<AppUser> GetActivesById(int CompanyID)
         {
-            return _kullaniciRepository.GetList(x=>x.CompanyID==CompanyID&&x.Status!=3).ToList();
+            return _appUserRepository.GetList(x=>x.CompanyID==CompanyID&&x.Status!=3).ToList();
         }
         public AppUser Login(string UserName, string Password)
         {
-            var User = _kullaniciRepository.Get(a => a.UserName.ToLower() == UserName.ToLower());
+            var User = _appUserRepository.Get(a => a.UserName.ToLower() == UserName.ToLower());
             if (User!=null)
             {
                 if (Dantex.DeCrypt(User.Password)== Password)
@@ -59,21 +59,21 @@ namespace Business.Services
         {
             appUser.CreatedDate = DateTime.Now;
 
-            _kullaniciRepository.Add(appUser);
+            _appUserRepository.Add(appUser);
             return "Ok";
         }
         public string Update(AppUser appUser)
         {
-            var User = _kullaniciRepository.Get(a => a.ID== appUser.ID);
+            var User = _appUserRepository.Get(a => a.ID== appUser.ID);
             appUser.CreatedDate = User.CreatedDate;
             appUser.ModifiedDate = DateTime.Now;
             appUser.Status = 2;
-            _kullaniciRepository.Update(appUser);
+            _appUserRepository.Update(appUser);
             return "Ok";
         }
         public string Delete(AppUser appUser)
         {
-            _kullaniciRepository.Delete(appUser);
+            _appUserRepository.Delete(appUser);
             return "Ok";
         }
 
