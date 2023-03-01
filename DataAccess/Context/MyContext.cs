@@ -31,6 +31,9 @@ namespace DataAccess.Context
         public DbSet<Country> Countries { get; set; }
         public DbSet<Job> Jobs { get; set; }
         public DbSet<SocialLife> SocialLives { get; set; }
+        public DbSet<EnvironmentalExposure> EnvironmentalExposures { get; set; }
+
+
 
         //public DbSet<FormListVM> FormVMQuery { get; set; }
 

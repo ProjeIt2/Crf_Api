@@ -60,8 +60,9 @@ namespace Entities
         public string DrugCurrentStatus { get; set; }
         //-------------------------------------
 
-
         //Relational Properties
         public int? FormID { get; set; }
+        public int? EnvironmentalExposureID { get; set; }
+        public int? JobID { get; set; }
     }
 }

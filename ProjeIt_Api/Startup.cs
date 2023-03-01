@@ -61,6 +61,8 @@ namespace ProjeIt_Api
             services.AddScoped<IJobService, JobService>();
             services.AddScoped<ISocialLifeRepository, SocialLifeRepository>();
             services.AddScoped<ISocialLifeService, SocialLifeService>();
+            services.AddScoped<IEnvironmentalExposureRepository, EnvironmentalExposureRepository>();
+            services.AddScoped<IEnvironmentalExposureService, EnvironmentalExposureService>();
             #endregion
         }
 
