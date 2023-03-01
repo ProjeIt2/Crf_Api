@@ -63,6 +63,14 @@ namespace ProjeIt_Api
             services.AddScoped<ISocialLifeService, SocialLifeService>();
             services.AddScoped<IEnvironmentalExposureRepository, EnvironmentalExposureRepository>();
             services.AddScoped<IEnvironmentalExposureService, EnvironmentalExposureService>();
+            services.AddScoped<IDiseaseRepository, DiseaseRepository>();
+            services.AddScoped<IDiseaseService, DiseaseService>();
+            services.AddScoped<IDiagnosisHistoryRepository, DiagnosisHistoryRepository>();
+            services.AddScoped<IDiagnosisHistoryService, DiagnosisHistoryService>();
+            services.AddScoped<IMedicalStatusRepository, MedicalStatusRepository>();
+            services.AddScoped<IMedicalStatusService, MedicalStatusService>();
+            services.AddScoped<IICD10CodeRepository, ICD10CodeRepository>();
+            services.AddScoped<IICD10CodeService, ICD10CodeService>();
             #endregion
         }
 

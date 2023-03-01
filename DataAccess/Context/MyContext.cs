@@ -32,7 +32,10 @@ namespace DataAccess.Context
         public DbSet<Job> Jobs { get; set; }
         public DbSet<SocialLife> SocialLives { get; set; }
         public DbSet<EnvironmentalExposure> EnvironmentalExposures { get; set; }
-
+        public DbSet<Disease> Diseases { get; set; }
+        public DbSet<DiagnosisHistory> DiagnosisHistories { get; set; }
+        public DbSet<MedicalStatus> MedicalStatuses { get; set; }
+        public DbSet<ICD10Code> ICD10Code { get; set; }
 
 
         //public DbSet<FormListVM> FormVMQuery { get; set; }
