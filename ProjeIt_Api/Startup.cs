@@ -71,6 +71,14 @@ namespace ProjeIt_Api
             services.AddScoped<IMedicalStatusService, MedicalStatusService>();
             services.AddScoped<IICD10CodeRepository, ICD10CodeRepository>();
             services.AddScoped<IICD10CodeService, ICD10CodeService>();
+            services.AddScoped<IDonorMedicalHistoryRepository, DonorMedicalHistoryRepository>();
+            services.AddScoped<IDonorMedicalHistoryService, DonorMedicalHistoryService>();
+            services.AddScoped<IAffinityRepository, AffinityRepository>();
+            services.AddScoped<IAffinityService, AffinityService>();
+            services.AddScoped<IFamilyMedicalHistoryRepository, FamilyMedicalHistoryRepository>();
+            services.AddScoped<IFamilyMedicalHistoryService, FamilyMedicalHistoryService>();
+            services.AddScoped<IDiagnosisRepository, DiagnosisRepository>();
+            services.AddScoped<IDiagnosisService, DiagnosisService>();
             #endregion
         }
 

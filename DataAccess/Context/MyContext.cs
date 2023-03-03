@@ -34,9 +34,12 @@ namespace DataAccess.Context
         public DbSet<EnvironmentalExposure> EnvironmentalExposures { get; set; }
         public DbSet<Disease> Diseases { get; set; }
         public DbSet<DiagnosisHistory> DiagnosisHistories { get; set; }
-        public DbSet<MedicalStatus> MedicalStatuses { get; set; }
+        public DbSet<MedicalStatus> MedicalStatus { get; set; }
         public DbSet<ICD10Code> ICD10Code { get; set; }
-
+        public DbSet<DonorMedicalHistory> DonorMedicalHistories { get; set; }
+        public DbSet<Affinity> Affinities { get; set; }
+        public DbSet<FamilyMedicalHistory> FamilyMedicalHistories { get; set; }
+        public DbSet<Diagnosis> Diagnosis { get; set; }
 
         //public DbSet<FormListVM> FormVMQuery { get; set; }
 
