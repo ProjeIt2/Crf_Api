@@ -79,6 +79,8 @@ namespace ProjeIt_Api
             services.AddScoped<IFamilyMedicalHistoryService, FamilyMedicalHistoryService>();
             services.AddScoped<IDiagnosisRepository, DiagnosisRepository>();
             services.AddScoped<IDiagnosisService, DiagnosisService>();
+            services.AddScoped<IGynecologicalHistoryRepository, GynecologicalHistoryRepository>();
+            services.AddScoped<IGynecologicalHistoryService, GynecologicalHistoryService>();
             #endregion
         }
 

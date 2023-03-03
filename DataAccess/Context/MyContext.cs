@@ -40,6 +40,7 @@ namespace DataAccess.Context
         public DbSet<Affinity> Affinities { get; set; }
         public DbSet<FamilyMedicalHistory> FamilyMedicalHistories { get; set; }
         public DbSet<Diagnosis> Diagnosis { get; set; }
+        public DbSet<GynecologicalHistory> GynecologicalHistories { get; set; }
 
         //public DbSet<FormListVM> FormVMQuery { get; set; }
 
