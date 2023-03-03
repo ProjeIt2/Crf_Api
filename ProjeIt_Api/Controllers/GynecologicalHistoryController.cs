@@ -29,6 +29,12 @@ namespace ProjeIt_Api.Controllers
             int CompanyID = 2;
             return Ok(_gynecologicalHistoryService.GetActives(CompanyID));
         }
+        [HttpGet("getActivesFormID")]
+        public IActionResult GetActivesFormID(int FormID)
+        {
+          
+            return Ok(_gynecologicalHistoryService.GetActivesFormID(FormID));
+        }
         [HttpGet("getActivesById")]
         public IActionResult GetActivesById(int id)
         {

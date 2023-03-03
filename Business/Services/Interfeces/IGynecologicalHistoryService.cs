@@ -12,6 +12,7 @@ namespace Business.Services.Interfeces
         GynecologicalHistory GetById(int Id);
         List<GynecologicalHistory> GetList();
         List<GynecologicalHistory> GetActives(int CompanyID);
+        List<GynecologicalHistory> GetActivesFormID(int FormID);
         GynecologicalHistory GetActivesById(int id);
         string Add(GynecologicalHistory gynecologicalHistory);
         string Update(GynecologicalHistory gynecologicalHistory);

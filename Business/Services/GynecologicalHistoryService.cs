@@ -29,6 +29,10 @@ namespace Business.Services
         {
             return _gynecologicalHistoryRepository.GetList(x=>x.CompanyID== CompanyID && x.Status != 3).ToList();
         }
+        public List<GynecologicalHistory> GetActivesFormID(int FormID)
+        {
+            return _gynecologicalHistoryRepository.GetList(x => x.FormID == FormID && x.Status != 3).ToList();
+        }
         public GynecologicalHistory GetActivesById(int id)
         {
             return _gynecologicalHistoryRepository.Get(x => x.ID == id && x.Status != 3);
