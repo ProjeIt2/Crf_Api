@@ -11,7 +11,7 @@ namespace Business.Services.Interfeces
     {
         Affinity GetById(int Id);
         List<Affinity> GetList();
-        List<Affinity> GetActives();
+        List<Affinity> GetActives(int CompanyID);
         Affinity GetActivesById(int id);
         string Add(Affinity affinity);
         string Update(Affinity affinity);

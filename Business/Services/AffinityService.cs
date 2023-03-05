@@ -25,9 +25,9 @@ namespace Business.Services
         {
             return _affinityRepository.GetList().ToList();
         }
-        public List<Affinity> GetActives()
+        public List<Affinity> GetActives(int CompanyID)
         {
-            return _affinityRepository.GetList(x=>x.CompanyID==2 && x.Status != 3).ToList();
+            return _affinityRepository.GetList(x=>x.CompanyID== CompanyID && x.Status != 3).ToList();
         }
         public Affinity GetActivesById(int id)
         {

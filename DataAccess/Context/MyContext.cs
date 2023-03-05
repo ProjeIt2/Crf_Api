@@ -41,6 +41,11 @@ namespace DataAccess.Context
         public DbSet<FamilyMedicalHistory> FamilyMedicalHistories { get; set; }
         public DbSet<Diagnosis> Diagnosis { get; set; }
         public DbSet<GynecologicalHistory> GynecologicalHistories { get; set; }
+        public DbSet<Pill> Pills { get; set; }
+        public DbSet<Usage> Usages { get; set; }
+        public DbSet<CurrentStatus> CurrentStatus { get; set; }
+        public DbSet<Medicine> Medicines { get; set; }
+
 
         //public DbSet<FormListVM> FormVMQuery { get; set; }
 

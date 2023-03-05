@@ -81,6 +81,14 @@ namespace ProjeIt_Api
             services.AddScoped<IDiagnosisService, DiagnosisService>();
             services.AddScoped<IGynecologicalHistoryRepository, GynecologicalHistoryRepository>();
             services.AddScoped<IGynecologicalHistoryService, GynecologicalHistoryService>();
+            services.AddScoped<IPillRepository, PillRepository>();
+            services.AddScoped<IPillService, PillService>();
+            services.AddScoped<IUsageRepository, UsageRepository>();
+            services.AddScoped<IUsageService, UsageService>();
+            services.AddScoped<ICurrentStatusRepository, CurrentStatusRepository>();
+            services.AddScoped<ICurrentStatusService, CurrentStatusService>();
+            services.AddScoped<IMedicineRepository, MedicineRepository>();
+            services.AddScoped<IMedicineService, MedicineService>();
             #endregion
         }
 
