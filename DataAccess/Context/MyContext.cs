@@ -45,6 +45,8 @@ namespace DataAccess.Context
         public DbSet<Usage> Usages { get; set; }
         public DbSet<CurrentStatus> CurrentStatus { get; set; }
         public DbSet<Medicine> Medicines { get; set; }
+        public DbSet<Virus> Virus { get; set; }
+        public DbSet<ViralInfection> ViralInfections { get; set; }
 
 
         //public DbSet<FormListVM> FormVMQuery { get; set; }

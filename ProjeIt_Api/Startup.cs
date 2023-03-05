@@ -89,6 +89,10 @@ namespace ProjeIt_Api
             services.AddScoped<ICurrentStatusService, CurrentStatusService>();
             services.AddScoped<IMedicineRepository, MedicineRepository>();
             services.AddScoped<IMedicineService, MedicineService>();
+            services.AddScoped<IVirusRepository, VirusRepository>();
+            services.AddScoped<IVirusService, VirusService>();
+            services.AddScoped<IViralInfectionRepository, ViralInfectionRepository>();
+            services.AddScoped<IViralInfectionService, ViralInfectionService>();
             #endregion
         }
 
