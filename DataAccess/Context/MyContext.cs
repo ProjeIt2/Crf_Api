@@ -47,7 +47,11 @@ namespace DataAccess.Context
         public DbSet<Medicine> Medicines { get; set; }
         public DbSet<Virus> Virus { get; set; }
         public DbSet<ViralInfection> ViralInfections { get; set; }
-
+        public DbSet<OperationProcedure> OperationProcedures { get; set; }
+        public DbSet<AnatomicalArea> AnatomicalAreas { get; set; }
+        public DbSet<AdditionType> AdditionTypes { get; set; }
+        public DbSet<Specimen> Specimen { get; set; }
+        public DbSet<DiagnosisInformation> DiagnosisInformations { get; set; }
 
         //public DbSet<FormListVM> FormVMQuery { get; set; }
 

@@ -93,6 +93,16 @@ namespace ProjeIt_Api
             services.AddScoped<IVirusService, VirusService>();
             services.AddScoped<IViralInfectionRepository, ViralInfectionRepository>();
             services.AddScoped<IViralInfectionService, ViralInfectionService>();
+            services.AddScoped<IOperationProcedureRepository, OperationProcedureRepository>();
+            services.AddScoped<IOperationProcedureService, OperationProcedureService>();
+            services.AddScoped<IAnatomicalAreaRepository, AnatomicalAreaRepository>();
+            services.AddScoped<IAnatomicalAreaService, AnatomicalAreaService>();
+            services.AddScoped<IAdditionTypeRepository, AdditionTypeRepository>();
+            services.AddScoped<IAdditionTypeService, AdditionTypeService>();
+            services.AddScoped<ISpecimenRepository, SpecimenRepository>();
+            services.AddScoped<ISpecimenService, SpecimenService>();
+            services.AddScoped<IDiagnosisInformationRepository, DiagnosisInformationRepository>();
+            services.AddScoped<IDiagnosisInformationService, DiagnosisInformationService>();
             #endregion
         }
 
