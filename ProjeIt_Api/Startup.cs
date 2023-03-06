@@ -103,6 +103,16 @@ namespace ProjeIt_Api
             services.AddScoped<ISpecimenService, SpecimenService>();
             services.AddScoped<IDiagnosisInformationRepository, DiagnosisInformationRepository>();
             services.AddScoped<IDiagnosisInformationService, DiagnosisInformationService>();
+            services.AddScoped<ITumorAreaRepository, TumorAreaRepository>();
+            services.AddScoped<ITumorAreaService, TumorAreaService>();
+            services.AddScoped<ITNMRepository, TNMRepository>();
+            services.AddScoped<ITNMService, TNMService>();
+            services.AddScoped<ITumorTypeRepository, TumorTypeRepository>();
+            services.AddScoped<ITumorTypeService, TumorTypeService>();
+            services.AddScoped<IPhaseRepository, PhaseRepository>();
+            services.AddScoped<IPhaseService, PhaseService>();
+            services.AddScoped<ITumorStatusRepository, TumorStatusRepository>();
+            services.AddScoped<ITumorStatusService, TumorStatusService>();
             #endregion
         }
 

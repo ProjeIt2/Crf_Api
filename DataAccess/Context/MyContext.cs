@@ -52,6 +52,11 @@ namespace DataAccess.Context
         public DbSet<AdditionType> AdditionTypes { get; set; }
         public DbSet<Specimen> Specimen { get; set; }
         public DbSet<DiagnosisInformation> DiagnosisInformations { get; set; }
+        public DbSet<TumorArea> TumorAreas { get; set; }
+        public DbSet<TNM> TNMs { get; set; }
+        public DbSet<TumorType> TumorTypes { get; set; }
+        public DbSet<Phase> Phases { get; set; }
+        public DbSet<TumorStatus> TumorStatuses { get; set; }
 
         //public DbSet<FormListVM> FormVMQuery { get; set; }
 
