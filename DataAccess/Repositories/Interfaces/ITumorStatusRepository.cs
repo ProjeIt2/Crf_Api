@@ -12,5 +12,6 @@ namespace DataAccess.Repositories.Interfaces
     public interface ITumorStatusRepository : IEntityRepository<TumorStatus>
     {
         List<TumorStatusVM> GetListTumorStatuss(int FormID);
+        TumorStatusVM GetListTumorStatussID(int id);
     }
 }

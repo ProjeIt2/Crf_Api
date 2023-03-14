@@ -12,5 +12,6 @@ namespace DataAccess.Repositories.Interfaces
     public interface IDiagnosisInformationRepository : IEntityRepository<DiagnosisInformation>
     {
         List<DiagnosisInformationVM> GetListDiagnosisInformations(int FormID);
+        DiagnosisInformationVM GetListDiagnosisInformationsID(int id);
     }
 }

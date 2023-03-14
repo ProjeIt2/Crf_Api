@@ -35,6 +35,10 @@ namespace Business.Services
         {
             return new List<MedicineVM>(_medicineRepository.GetListMedicines(FormID).ToList());
         }
+        public MedicineVM GetListMedicinesID(int id)
+        {
+            return  _medicineRepository.GetListMedicinesID(id);
+        }
         public Medicine GetActivesById(int id)
         {
             return _medicineRepository.Get(x=>x.ID==id&&x.Status!=3);

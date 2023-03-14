@@ -15,6 +15,8 @@ namespace Business.Services.Interfeces
         List<Medicine> GetActives(int CompanyID);
         Medicine GetActivesById(int id);
         List<MedicineVM> GetListMedicines(int FormID);
+       MedicineVM GetListMedicinesID(int id); 
+
         string Add(Medicine medicine);
         string Update(Medicine medicine);
         string Delete(Medicine medicine);

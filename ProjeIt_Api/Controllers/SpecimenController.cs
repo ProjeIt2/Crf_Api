@@ -37,6 +37,13 @@ namespace ProjeIt_Api.Controllers
             return Ok(_specimenService.GetListSpecimens(FormID));
 
         }
+        [HttpGet("getListSpecimensID")]
+        public IActionResult GetListSpecimensID(int id)
+        {
+
+            return Ok(_specimenService.GetListSpecimensID(id));
+
+        }
         [HttpGet("getActivesById")]
         public IActionResult GetActivesById(int id)
         {

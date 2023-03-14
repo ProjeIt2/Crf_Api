@@ -35,6 +35,11 @@ namespace Business.Services
         {
             return new List<SpecimenVM>(_specimenRepository.GetListSpecimens(FormID).ToList());
         }
+
+        public SpecimenVM GetListSpecimensID(int id)
+        {
+            return _specimenRepository.GetListSpecimensID(id);
+        }
         public Specimen GetActivesById(int id)
         {
             return _specimenRepository.Get(x=>x.ID==id&&x.Status!=3);

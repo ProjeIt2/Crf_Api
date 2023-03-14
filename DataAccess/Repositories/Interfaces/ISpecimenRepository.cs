@@ -12,5 +12,6 @@ namespace DataAccess.Repositories.Interfaces
     public interface ISpecimenRepository : IEntityRepository<Specimen>
     {
         List<SpecimenVM> GetListSpecimens(int FormID);
+        SpecimenVM GetListSpecimensID(int id);
     }
 }

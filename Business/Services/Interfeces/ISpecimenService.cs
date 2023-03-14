@@ -15,6 +15,7 @@ namespace Business.Services.Interfeces
         List<Specimen> GetActives(int CompanyID);
         Specimen GetActivesById(int id);
         List<SpecimenVM> GetListSpecimens(int FormID);
+        SpecimenVM GetListSpecimensID(int id);
         string Add(Specimen specimen);
         string Update(Specimen specimen);
         string Delete(Specimen specimen);

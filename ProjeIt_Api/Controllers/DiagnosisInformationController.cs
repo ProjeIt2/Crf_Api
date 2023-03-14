@@ -31,6 +31,13 @@ namespace ProjeIt_Api.Controllers
             return Ok(_diagnosisInformationService.GetListDiagnosisInformations(FormID));
 
         }
+        [HttpGet("tetListDiagnosisInformationsID")]
+        public IActionResult GetListDiagnosisInformationsID(int id)
+        {
+
+            return Ok(_diagnosisInformationService.GetListDiagnosisInformationsID(id));
+
+        }
         [HttpGet("GetActivesById")]
         public IActionResult GetActivesById(int CompanyID)
         {

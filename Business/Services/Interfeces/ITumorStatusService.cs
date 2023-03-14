@@ -15,6 +15,7 @@ namespace Business.Services.Interfeces
         List<TumorStatus> GetActives(int CompanyID);
         TumorStatus GetActivesById(int id);
         List<TumorStatusVM> GetListTumorStatuss(int FormID);
+        TumorStatusVM GetListTumorStatussID(int id);
         string Add(TumorStatus tumorStatus);
         string Update(TumorStatus tumorStatus);
         string Delete(TumorStatus tumorStatus);

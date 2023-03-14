@@ -31,6 +31,10 @@ namespace Business.Services
         {
             return new List<DiagnosisInformationVM>(_diagnosisInformationRepository.GetListDiagnosisInformations(FormID).ToList());
         }
+        public DiagnosisInformationVM GetListDiagnosisInformationsID(int id)
+        {
+            return _diagnosisInformationRepository.GetListDiagnosisInformationsID(id);
+        }
         public List<DiagnosisInformation> GetActivesById(int CompanyID)
         {
             return _diagnosisInformationRepository.GetList(x=>x.CompanyID==CompanyID&&x.Status!=3).ToList();

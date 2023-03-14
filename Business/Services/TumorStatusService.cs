@@ -35,6 +35,10 @@ namespace Business.Services
         {
             return new List<TumorStatusVM>(_tumorStatusRepository.GetListTumorStatuss(FormID).ToList());
         }
+        public TumorStatusVM GetListTumorStatussID(int id)
+        {
+            return _tumorStatusRepository.GetListTumorStatussID(id);
+        }
         public TumorStatus GetActivesById(int id)
         {
             return _tumorStatusRepository.Get(x=>x.ID==id&&x.Status!=3);

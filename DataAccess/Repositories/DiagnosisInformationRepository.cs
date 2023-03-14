@@ -20,7 +20,7 @@ namespace DataAccess.Repositories
             var _result = new List<DiagnosisInformationVM>();
             using (var context = new ProjeItContext())
             {
-                var result = (from _diagInfs in context.DiagnosisInformations.Where(x => x.FormID == FormID)
+                var result = (from _diagInfs in context.DiagnosisInformations.Where(x => x.FormID == FormID&&x.Status!=3)
                               join _form in context.Forms on _diagInfs.FormID equals _form.ID
                               join _clinDiag in context.ClinicalDiagnosis on _diagInfs.ClinicalDiagnosisID equals _clinDiag.ID
                               join _icd in context.ICD10Code on _diagInfs.ICD10CodeID equals _icd.ID
@@ -43,5 +43,32 @@ namespace DataAccess.Repositories
             return _result;
         }
 
+        public DiagnosisInformationVM GetListDiagnosisInformationsID(int id)
+        {
+            var _result = new DiagnosisInformationVM();
+            using (var context = new ProjeItContext())
+            {
+                var result = (from _diagInfs in context.DiagnosisInformations.Where(x => x.ID == id && x.Status != 3)
+                              join _form in context.Forms on _diagInfs.FormID equals _form.ID
+                              join _clinDiag in context.ClinicalDiagnosis on _diagInfs.ClinicalDiagnosisID equals _clinDiag.ID
+                              join _icd in context.ICD10Code on _diagInfs.ICD10CodeID equals _icd.ID
+                              select new DiagnosisInformationVM
+                              {
+                                  ID = _diagInfs.ID,
+                                  FormID = _diagInfs.FormID,
+                                  DiagnosisDate = _diagInfs.DiagnosisDate,
+                                  Barcode = _form.Barcode,
+                                  ClinicalDiagnosisID = _clinDiag.ID,
+                                  DiagnosisName = _clinDiag.DiagnosisName,
+                                  ICD10_Code = _icd.ICD10_Code,
+                                  ICD10CodeID = _icd.ID,
+                              }).FirstOrDefault();
+
+                _result = result;
+
+
+            }
+            return _result;
+        }
     }
 }

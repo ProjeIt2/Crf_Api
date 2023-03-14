@@ -113,6 +113,30 @@ namespace ProjeIt_Api
             services.AddScoped<IPhaseService, PhaseService>();
             services.AddScoped<ITumorStatusRepository, TumorStatusRepository>();
             services.AddScoped<ITumorStatusService, TumorStatusService>();
+            services.AddScoped<IDoctorRequestedReportRepository, DoctorRequestedReportRepository>();
+            services.AddScoped<IDoctorRequestedReportService, DoctorRequestedReportService>();
+            services.AddScoped<IClinicalStatusRepository, ClinicalStatusRepository>();
+            services.AddScoped<IClinicalStatusService, ClinicalStatusService>();
+            services.AddScoped<IReportRepository, ReportRepository>();
+            services.AddScoped<IReportService, ReportService>();
+            services.AddScoped<IMetastasisRepository, MetastasisRepository>();
+            services.AddScoped<IMetastasisService, MetastasisService>();
+            services.AddScoped<ILymphNodeRepository, LymphNodeRepository>();
+            services.AddScoped<ILymphNodeService, LymphNodeService>();
+            services.AddScoped<IDistantMetastasisRepository, DistantMetastasisRepository>();
+            services.AddScoped<IDistantMetastasisService, DistantMetastasisService>();
+            services.AddScoped<IMetastasisStatusRepository, MetastasisStatusRepository>();
+            services.AddScoped<IMetastasisStatusService, MetastasisStatusService>();
+            services.AddScoped<ITreatmentRepository, TreatmentRepository>();
+            services.AddScoped<ITreatmentService, TreatmentService>();
+            services.AddScoped<ICancerTreatmentRepository, CancerTreatmentRepository>();
+            services.AddScoped<ICancerTreatmentService, CancerTreatmentService>();
+            services.AddScoped<IUploadFileRepository, UploadFileRepository>();
+            services.AddScoped<IUploadFileService, UploadFileService>();
+             services.AddScoped<IUploadFilesPatientICFRepository, UploadFilesPatientICFRepository>();
+            services.AddScoped<IUploadFilesPatientICFService, UploadFilesPatientICFService>();
+            services.AddScoped<IAdditionalInformationRepository, AdditionalInformationRepository>();
+            services.AddScoped<IAdditionalInformationService, AdditionalInformationService>();
             #endregion
         }
 

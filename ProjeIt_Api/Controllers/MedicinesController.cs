@@ -37,6 +37,13 @@ namespace ProjeIt_Api.Controllers
             return Ok(_medicineService.GetListMedicines(FormID));
 
         }
+        [HttpGet("getListMedicinesID")]
+        public IActionResult GetListMedicinesID(int id)
+        {
+
+            return Ok(_medicineService.GetListMedicinesID(id));
+
+        }
         [HttpGet("getActivesById")]
         public IActionResult GetActivesById(int id)
         {
