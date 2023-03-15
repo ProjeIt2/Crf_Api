@@ -137,6 +137,8 @@ namespace ProjeIt_Api
             services.AddScoped<IUploadFilesPatientICFService, UploadFilesPatientICFService>();
             services.AddScoped<IAdditionalInformationRepository, AdditionalInformationRepository>();
             services.AddScoped<IAdditionalInformationService, AdditionalInformationService>();
+            services.AddScoped<IContactUsRepository, ContactUsRepository>();
+            services.AddScoped<IContactUsService, ContactUsService>();
             #endregion
         }
 

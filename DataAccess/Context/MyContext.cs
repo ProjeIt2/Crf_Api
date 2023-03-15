@@ -69,7 +69,7 @@ namespace DataAccess.Context
         public DbSet<UploadFile> UploadFiles { get; set; }
         public DbSet<UploadFilesPatientICF> UploadFilesPatientICFs { get; set; }
         public DbSet<AdditionalInformation> AdditionalInformations { get; set; }
-
+        public DbSet<ContactUs> ContactUses { get; set; }
 
         //public DbSet<FormListVM> FormVMQuery { get; set; }
 
