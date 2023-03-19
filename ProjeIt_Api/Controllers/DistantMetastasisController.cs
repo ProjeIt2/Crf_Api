@@ -50,11 +50,24 @@ namespace ProjeIt_Api.Controllers
         [HttpPost("update")]
         public IActionResult Update(DistantMetastasis distantMetastasis)
         {
+            var test = _distantMetastasisService.GetActivesById(distantMetastasis.ID);
+
+            distantMetastasis.ModifiedDate = DateTime.Now;
+            distantMetastasis.Status = 2;
+            distantMetastasis.CompanyID = test.CompanyID;
+            distantMetastasis.CreatedDate = test.CreatedDate;
             return Ok(_distantMetastasisService.Update(distantMetastasis));
         }
         [HttpPost("delete")]
         public IActionResult Delete(DistantMetastasis distantMetastasis)
         {
+            var test = _distantMetastasisService.GetActivesById(distantMetastasis.ID);
+
+            distantMetastasis.ModifiedDate = test.ModifiedDate;
+            distantMetastasis.Status = 3;
+            distantMetastasis.CompanyID = test.CompanyID;
+            distantMetastasis.CreatedDate = test.CreatedDate;
+            distantMetastasis.DeletedDate = DateTime.Now;
             return Ok(_distantMetastasisService.Delete(distantMetastasis));
         }
     }

@@ -48,13 +48,27 @@ namespace ProjeIt_Api.Controllers
             return Ok(_tumorAreaService.Add(tumorArea));
         }
         [HttpPost("update")]
-        public IActionResult Update(TumorArea tumorArea)
-        {
+        public IActionResult Update(TumorArea tumorArea) 
+        { 
+  
+            var test = _tumorAreaService.GetActivesById(tumorArea.ID);
+
+            tumorArea.ModifiedDate = DateTime.Now;
+            tumorArea.Status = 2;
+            tumorArea.CompanyID = test.CompanyID;
+            tumorArea.CreatedDate = test.CreatedDate;
             return Ok(_tumorAreaService.Update(tumorArea));
         }
         [HttpPost("delete")]
         public IActionResult Delete(TumorArea tumorArea)
         {
+            var test = _tumorAreaService.GetActivesById(tumorArea.ID);
+
+            tumorArea.ModifiedDate = test.ModifiedDate;
+            tumorArea.Status = 3;
+            tumorArea.CompanyID = test.CompanyID;
+            tumorArea.CreatedDate = test.CreatedDate;
+            tumorArea.DeletedDate = DateTime.Now;
             return Ok(_tumorAreaService.Delete(tumorArea));
         }
     }

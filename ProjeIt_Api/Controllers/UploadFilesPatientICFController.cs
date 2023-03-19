@@ -59,11 +59,24 @@ namespace ProjeIt_Api.Controllers
         [HttpPost("update")]
         public IActionResult Update(UploadFilesPatientICF uploadFile)
         {
+            var test = _uploadFileService.GetActivesById(uploadFile.ID);
+
+            uploadFile.ModifiedDate = DateTime.Now;
+            uploadFile.Status = 2;
+            uploadFile.CompanyID = test.CompanyID;
+            uploadFile.CreatedDate = test.CreatedDate;
             return Ok(_uploadFileService.Update(uploadFile));
         }
         [HttpPost("delete")]
         public IActionResult Delete(UploadFilesPatientICF uploadFile)
         {
+            var test = _uploadFileService.GetActivesById(uploadFile.ID);
+
+            uploadFile.ModifiedDate = test.ModifiedDate;
+            uploadFile.Status = 3;
+            uploadFile.CompanyID = test.CompanyID;
+            uploadFile.CreatedDate = test.CreatedDate;
+            uploadFile.DeletedDate = DateTime.Now;
             return Ok(_uploadFileService.Delete(uploadFile));
         }
     }

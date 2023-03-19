@@ -31,13 +31,6 @@ namespace ProjeIt_Api.Controllers
             return Ok(_appUserService.Login(UserName, Password));
         }
 
-        //[HttpGet("GetListKullanici")]
-        //public IActionResult GetListKullanici()
-        //{
-
-        //    return Ok(_appUserService.GetListKullanici());
-
-        //}
         [HttpGet("GetActivesById")]
         public IActionResult GetActivesById(int CompanyID)
         {
@@ -59,11 +52,25 @@ namespace ProjeIt_Api.Controllers
         [HttpPost("update")]
         public IActionResult Update(AppUser appUser)
         {
+            var test = _appUserService.GetActivesById(appUser.ID).FirstOrDefault();
+
+            appUser.ModifiedDate = DateTime.Now;
+            appUser.Status = 2;
+            appUser.CompanyID = test.CompanyID;
+            appUser.CreatedDate = test.CreatedDate;
             return Ok(_appUserService.Update(appUser));
         }
         [HttpPost("delete")]
         public IActionResult Delete(AppUser appUser)
         {
+            var test = _appUserService.GetActivesById(appUser.ID).FirstOrDefault();
+
+            appUser.ModifiedDate = test.ModifiedDate;
+            appUser.Status = 3;
+            appUser.CompanyID = test.CompanyID;
+            appUser.CreatedDate = test.CreatedDate;
+            appUser.DeletedDate = DateTime.Now;
+            return Ok(_appUserService.Delete(appUser));
             return Ok(_appUserService.Delete(appUser));
         }
     }

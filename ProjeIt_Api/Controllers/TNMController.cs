@@ -48,13 +48,26 @@ namespace ProjeIt_Api.Controllers
             return Ok(_tNMService.Add(tNM));
         }
         [HttpPost("update")]
-        public IActionResult Update(TNM tNM)
+        public IActionResult Update(TNM tNM) 
         {
+            var test = _tNMService.GetActivesById(tNM.ID);
+
+            tNM.ModifiedDate = DateTime.Now;
+            tNM.Status = 2;
+            tNM.CompanyID = test.CompanyID;
+            tNM.CreatedDate = test.CreatedDate;
             return Ok(_tNMService.Update(tNM));
         }
         [HttpPost("delete")]
         public IActionResult Delete(TNM tNM)
         {
+            var test = _tNMService.GetActivesById(tNM.ID);
+
+            tNM.ModifiedDate = test.ModifiedDate;
+            tNM.Status = 3;
+            tNM.CompanyID = test.CompanyID;
+            tNM.CreatedDate = test.CreatedDate;
+            tNM.DeletedDate = DateTime.Now;
             return Ok(_tNMService.Delete(tNM));
         }
     }

@@ -50,11 +50,24 @@ namespace ProjeIt_Api.Controllers
         [HttpPost("update")]
         public IActionResult Update(Affinity affinity)
         {
+            var test = _affinityService.GetActivesById(affinity.ID);
+
+            affinity.ModifiedDate = DateTime.Now;
+            affinity.Status = 2;
+            affinity.CompanyID = test.CompanyID;
+            affinity.CreatedDate = test.CreatedDate;
             return Ok(_affinityService.Update(affinity));
         }
         [HttpPost("delete")]
         public IActionResult Delete(Affinity affinity)
         {
+            var test = _affinityService.GetActivesById(affinity.ID);
+
+            affinity.ModifiedDate = test.ModifiedDate;
+            affinity.Status = 3;
+            affinity.CompanyID = test.CompanyID;
+            affinity.CreatedDate = test.CreatedDate;
+            affinity.DeletedDate = DateTime.Now;
             return Ok(_affinityService.Delete(affinity));
         }
     }

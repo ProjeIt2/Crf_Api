@@ -58,11 +58,24 @@ namespace ProjeIt_Api.Controllers
         [HttpPost("update")]
         public IActionResult Update(ViralInfection viralInfection)
         {
+            var test = _viralInfectionService.GetActivesById(viralInfection.ID);
+
+            viralInfection.ModifiedDate = DateTime.Now;
+            viralInfection.Status = 2;
+            viralInfection.CompanyID = test.CompanyID;
+            viralInfection.CreatedDate = test.CreatedDate;
             return Ok(_viralInfectionService.Update(viralInfection));
         }
         [HttpPost("delete")]
         public IActionResult Delete(ViralInfection viralInfection)
         {
+            var test = _viralInfectionService.GetActivesById(viralInfection.ID);
+
+            viralInfection.ModifiedDate = test.ModifiedDate;
+            viralInfection.Status = 3;
+            viralInfection.CompanyID = test.CompanyID;
+            viralInfection.CreatedDate = test.CreatedDate;
+            viralInfection.DeletedDate = DateTime.Now;
             return Ok(_viralInfectionService.Delete(viralInfection));
         }
     }

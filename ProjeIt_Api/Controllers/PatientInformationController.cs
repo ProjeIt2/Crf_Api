@@ -48,13 +48,26 @@ namespace ProjeIt_Api.Controllers
         }
         [HttpPost("update")]
         public IActionResult Update(PatientInformation patientInformation)
-        {
+        { 
+             var test = _patientInformationService.GetActivesById(patientInformation.ID).FirstOrDefault();
+
+        patientInformation.ModifiedDate = DateTime.Now;
+            patientInformation.Status =2;
+            patientInformation.CompanyID = test.CompanyID;
+            patientInformation.CreatedDate = test.CreatedDate;
             return Ok(_patientInformationService.Update(patientInformation));
         }
         [HttpPost("delete")]
         public IActionResult Delete(PatientInformation patientInformation)
-        {
-            return Ok(_patientInformationService.Delete(patientInformation));
+    {
+        var test = _patientInformationService.GetActivesById(patientInformation.ID).FirstOrDefault();
+
+        patientInformation.ModifiedDate = test.ModifiedDate;
+        patientInformation.Status = 3;
+        patientInformation.CompanyID = test.CompanyID;
+        patientInformation.CreatedDate = test.CreatedDate;
+        patientInformation.DeletedDate = DateTime.Now;
+        return Ok(_patientInformationService.Delete(patientInformation));
         }
     }
 }

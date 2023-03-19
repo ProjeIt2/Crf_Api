@@ -11,7 +11,8 @@ namespace Business.Services.Interfeces
     {
         Disease GetById(int Id);
         List<Disease> GetList();
-        List<Disease> GetActivesById(int CompanyID);
+        List<Disease> GetActives(int CompanyID);
+        Disease GetActivesById(int id);
         string Add(Disease disease);
         string Update(Disease disease);
         string Delete(Disease disease);

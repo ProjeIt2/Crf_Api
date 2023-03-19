@@ -45,11 +45,24 @@ namespace ProjeIt_Api.Controllers
         [HttpPost("update")]
         public IActionResult Update(Personnel personnel)
         {
+            var test = _personnelService.GetActivesById(personnel.ID).FirstOrDefault();
+
+            personnel.ModifiedDate = DateTime.Now;
+            personnel.Status = 2;
+            personnel.CompanyID = test.CompanyID;
+            personnel.CreatedDate = test.CreatedDate;
             return Ok(_personnelService.Update(personnel));
         }
         [HttpPost("delete")]
         public IActionResult Delete(Personnel personnel)
         {
+            var test = _personnelService.GetActivesById(personnel.ID).FirstOrDefault();
+
+            personnel.ModifiedDate = test.ModifiedDate;
+            personnel.Status = 3;
+            personnel.CompanyID = test.CompanyID;
+            personnel.CreatedDate = test.CreatedDate;
+            personnel.DeletedDate = DateTime.Now;
             return Ok(_personnelService.Delete(personnel));
         }
     }

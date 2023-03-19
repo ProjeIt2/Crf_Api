@@ -50,11 +50,24 @@ namespace ProjeIt_Api.Controllers
         [HttpPost("update")]
         public IActionResult Update(AdditionType additionType)
         {
+            var test = _additionTypeService.GetActivesById(additionType.ID);
+
+            additionType.ModifiedDate = DateTime.Now;
+            additionType.Status = 2;
+            additionType.CompanyID = test.CompanyID;
+            additionType.CreatedDate = test.CreatedDate;
             return Ok(_additionTypeService.Update(additionType));
         }
         [HttpPost("delete")]
         public IActionResult Delete(AdditionType additionType)
         {
+            var test = _additionTypeService.GetActivesById(additionType.ID);
+
+            additionType.ModifiedDate = test.ModifiedDate;
+            additionType.Status = 3;
+            additionType.CompanyID = test.CompanyID;
+            additionType.CreatedDate = test.CreatedDate;
+            additionType.DeletedDate = DateTime.Now;
             return Ok(_additionTypeService.Delete(additionType));
         }
     }

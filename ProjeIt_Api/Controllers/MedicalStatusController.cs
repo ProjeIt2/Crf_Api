@@ -23,10 +23,16 @@ namespace ProjeIt_Api.Controllers
         {
             return Ok(_medicalStatusService.GetList());
         }
-        [HttpGet("GetActivesById")]
-        public IActionResult GetActivesById(int CompanyID)
+        [HttpGet("getActives")]
+        public IActionResult GetActives()
         {
-            return Ok(_medicalStatusService.GetById(CompanyID));
+            int CompanyID = 2;
+            return Ok(_medicalStatusService.GetActives(CompanyID));
+        }
+        [HttpGet("GetActivesById")]
+        public IActionResult GetActivesById(int id)
+        {
+            return Ok(_medicalStatusService.GetActivesById(id));
         }
         [HttpGet("getbyid")]
         public IActionResult GetById(int ID)
@@ -44,11 +50,24 @@ namespace ProjeIt_Api.Controllers
         [HttpPost("update")]
         public IActionResult Update(MedicalStatus medicalStatus)
         {
+            var test = _medicalStatusService.GetActivesById(medicalStatus.ID);
+
+            medicalStatus.ModifiedDate = DateTime.Now;
+            medicalStatus.Status = 2;
+            medicalStatus.CompanyID = test.CompanyID;
+            medicalStatus.CreatedDate = test.CreatedDate;
             return Ok(_medicalStatusService.Update(medicalStatus));
         }
         [HttpPost("delete")]
         public IActionResult Delete(MedicalStatus medicalStatus)
         {
+            var test = _medicalStatusService.GetActivesById(medicalStatus.ID);
+
+            medicalStatus.ModifiedDate = test.ModifiedDate;
+            medicalStatus.Status = 3;
+            medicalStatus.CompanyID = test.CompanyID;
+            medicalStatus.CreatedDate = test.CreatedDate;
+            medicalStatus.DeletedDate = DateTime.Now;
             return Ok(_medicalStatusService.Delete(medicalStatus));
         }
     }

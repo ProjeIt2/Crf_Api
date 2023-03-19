@@ -13,51 +13,64 @@ namespace ProjeIt_Api.Controllers
     [Route("[controller]")]
     public class FormController : ControllerBase
     {
-        private readonly IFormService _appUserService;
-        public FormController(IFormService appUserService)
+        private readonly IFormService _formService;
+        public FormController(IFormService formService)
         {
-            _appUserService = appUserService;
+            _formService = formService;
         }
 
         [HttpGet("getall")]
         public IActionResult GetList()
         {
-            return Ok(_appUserService.GetList());
+            return Ok(_formService.GetList());
         }
         [HttpGet("GetListForms")]
         public IActionResult GetListForms()
         {
 
-            return Ok(_appUserService.GetListForms());
+            return Ok(_formService.GetListForms());
 
         }
         [HttpGet("GetActivesById")]
         public IActionResult GetActivesById(int CompanyID)
         {
-            return Ok(_appUserService.GetById(CompanyID));
+            return Ok(_formService.GetById(CompanyID));
         }
         [HttpGet("getbyid")]
         public IActionResult GetById(int ID)
         {
-            return Ok(_appUserService.GetById(ID));
+            return Ok(_formService.GetById(ID));
         }
 
         [HttpPost("add")]
-        public IActionResult Add(Form appUser)
+        public IActionResult Add(Form form)
         {
-            appUser.CreatedDate = DateTime.Now;
-            appUser.Status = 1;
-            return Ok(_appUserService.Add(appUser));
+            form.CreatedDate = DateTime.Now;
+            form.Status = 1;
+            return Ok(_formService.Add(form));
         }
         [HttpPost("update")]
-        public IActionResult Update(Form appUser)
+        public IActionResult Update(Form form)
         {
-            return Ok(_appUserService.Update(appUser));
+            var test = _formService.GetActivesById(form.ID).FirstOrDefault();
+
+            form.ModifiedDate = DateTime.Now;
+            form.Status = 2;
+            form.CompanyID = test.CompanyID;
+            form.CreatedDate = test.CreatedDate;
+            return Ok(_formService.Update(form));
         }
         [HttpPost("delete")]
-        public IActionResult Delete(Form appUser)
+        public IActionResult Delete(Form form)
         {
-            return Ok(_appUserService.Delete(appUser));
+            var test = _formService.GetActivesById(form.ID).FirstOrDefault();
+
+            form.ModifiedDate = test.ModifiedDate;
+            form.Status = 3;
+            form.CompanyID = test.CompanyID;
+            form.CreatedDate = test.CreatedDate;
+            form.DeletedDate = DateTime.Now;
+            return Ok(_formService.Delete(form));
         }
     }
 }

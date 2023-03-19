@@ -56,11 +56,24 @@ namespace ProjeIt_Api.Controllers
         [HttpPost("update")]
         public IActionResult Update(GynecologicalHistory gynecologicalHistory)
         {
+            var test = _gynecologicalHistoryService.GetActivesById(gynecologicalHistory.ID);
+
+            gynecologicalHistory.ModifiedDate = DateTime.Now;
+            gynecologicalHistory.Status = 2;
+            gynecologicalHistory.CompanyID = test.CompanyID;
+            gynecologicalHistory.CreatedDate = test.CreatedDate;
             return Ok(_gynecologicalHistoryService.Update(gynecologicalHistory));
         }
         [HttpPost("delete")]
         public IActionResult Delete(GynecologicalHistory gynecologicalHistory)
         {
+            var test = _gynecologicalHistoryService.GetActivesById(gynecologicalHistory.ID);
+
+            gynecologicalHistory.ModifiedDate = test.ModifiedDate;
+            gynecologicalHistory.Status = 3;
+            gynecologicalHistory.CompanyID = test.CompanyID;
+            gynecologicalHistory.CreatedDate = test.CreatedDate;
+            gynecologicalHistory.DeletedDate = DateTime.Now;
             return Ok(_gynecologicalHistoryService.Delete(gynecologicalHistory));
         }
     }

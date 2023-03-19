@@ -65,11 +65,24 @@ namespace ProjeIt_Api.Controllers
         [HttpPost("update")]
         public IActionResult Update(MetastasisStatus metastasisStatus)
         {
+            var test = _metastasisStatusService.GetActivesById(metastasisStatus.ID);
+
+            metastasisStatus.ModifiedDate = DateTime.Now;
+            metastasisStatus.Status = 2;
+            metastasisStatus.CompanyID = test.CompanyID;
+            metastasisStatus.CreatedDate = test.CreatedDate;
             return Ok(_metastasisStatusService.Update(metastasisStatus));
         }
         [HttpPost("delete")]
         public IActionResult Delete(MetastasisStatus metastasisStatus)
         {
+            var test = _metastasisStatusService.GetActivesById(metastasisStatus.ID);
+
+            metastasisStatus.ModifiedDate = test.ModifiedDate;
+            metastasisStatus.Status = 3;
+            metastasisStatus.CompanyID = test.CompanyID;
+            metastasisStatus.CreatedDate = test.CreatedDate;
+            metastasisStatus.DeletedDate = DateTime.Now;
             return Ok(_metastasisStatusService.Delete(metastasisStatus));
         }
     }

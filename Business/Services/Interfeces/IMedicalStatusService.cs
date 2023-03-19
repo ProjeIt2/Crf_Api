@@ -11,7 +11,8 @@ namespace Business.Services.Interfeces
     {
         MedicalStatus GetById(int Id);
         List<MedicalStatus> GetList();
-        List<MedicalStatus> GetActivesById(int CompanyID);
+        List<MedicalStatus> GetActives(int CompanyID);
+        MedicalStatus GetActivesById(int id);
         string Add(MedicalStatus medicalStatus);
         string Update(MedicalStatus medicalStatus);
         string Delete(MedicalStatus medicalStatus);

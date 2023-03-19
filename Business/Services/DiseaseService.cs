@@ -25,9 +25,13 @@ namespace Business.Services
         {
             return _diseaseRepository.GetList().ToList();
         }
-        public List<Disease> GetActivesById(int CompanyID)
+        public List<Disease> GetActives(int CompanyID)
         {
             return _diseaseRepository.GetList(x => x.CompanyID == CompanyID && x.Status != 3).ToList();
+        }
+        public Disease GetActivesById(int id)
+        {
+            return _diseaseRepository.Get(x => x.ID == id && x.Status != 3);
         }
         public string Add(Disease disease)
         {

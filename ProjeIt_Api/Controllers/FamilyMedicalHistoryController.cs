@@ -51,6 +51,7 @@ namespace ProjeIt_Api.Controllers
         [HttpPost("add")]
         public IActionResult Add(FamilyMedicalHistory familyMedicalHistory)
         {
+            familyMedicalHistory.CompanyID = 2;
             familyMedicalHistory.CreatedDate = DateTime.Now;
             familyMedicalHistory.Status = 1;
             return Ok(_familyMedicalHistoryService.Add(familyMedicalHistory));
@@ -58,11 +59,25 @@ namespace ProjeIt_Api.Controllers
         [HttpPost("update")]
         public IActionResult Update(FamilyMedicalHistory familyMedicalHistory)
         {
+            var test = _familyMedicalHistoryService.GetActivesById(familyMedicalHistory.ID);
+
+            familyMedicalHistory.ModifiedDate = DateTime.Now;
+            familyMedicalHistory.Status =2;
+            familyMedicalHistory.CompanyID = test.CompanyID;
+            familyMedicalHistory.CreatedDate = test.CreatedDate;
+          
             return Ok(_familyMedicalHistoryService.Update(familyMedicalHistory));
         }
         [HttpPost("delete")]
         public IActionResult Delete(FamilyMedicalHistory familyMedicalHistory)
         {
+            var test = _familyMedicalHistoryService.GetActivesById(familyMedicalHistory.ID);
+
+            familyMedicalHistory.ModifiedDate = test.ModifiedDate;
+            familyMedicalHistory.Status = 3;
+            familyMedicalHistory.CompanyID = test.CompanyID;
+            familyMedicalHistory.CreatedDate = test.CreatedDate;
+            familyMedicalHistory.DeletedDate = DateTime.Now;
             return Ok(_familyMedicalHistoryService.Delete(familyMedicalHistory));
         }
     }

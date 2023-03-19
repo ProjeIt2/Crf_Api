@@ -11,7 +11,8 @@ namespace Business.Services.Interfeces
     {
         ICD10Code GetById(int Id);
         List<ICD10Code> GetList();
-        List<ICD10Code> GetActivesById(int CompanyID);
+        List<ICD10Code> GetActives(int CompanyID);
+        ICD10Code GetActivesById(int CompanyID);
         string Add(ICD10Code iCD10Code);
         string Update(ICD10Code iCD10Code);
         string Delete(ICD10Code iCD10Code);

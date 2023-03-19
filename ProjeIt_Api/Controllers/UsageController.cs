@@ -48,13 +48,26 @@ namespace ProjeIt_Api.Controllers
             return Ok(_usageService.Add(usage));
         }
         [HttpPost("update")]
-        public IActionResult Update(Usage usage)
+        public IActionResult Update(Usage usage) 
         {
+            var test = _usageService.GetActivesById(usage.ID);
+
+            usage.ModifiedDate = DateTime.Now;
+            usage.Status = 2;
+            usage.CompanyID = test.CompanyID;
+            usage.CreatedDate = test.CreatedDate;
             return Ok(_usageService.Update(usage));
         }
         [HttpPost("delete")]
         public IActionResult Delete(Usage usage)
         {
+            var test = _usageService.GetActivesById(usage.ID);
+
+            usage.ModifiedDate = test.ModifiedDate;
+            usage.Status = 3;
+            usage.CompanyID = test.CompanyID;
+            usage.CreatedDate = test.CreatedDate;
+            usage.DeletedDate = DateTime.Now;
             return Ok(_usageService.Delete(usage));
         }
     }

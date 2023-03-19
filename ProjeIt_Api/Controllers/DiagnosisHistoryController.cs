@@ -44,11 +44,24 @@ namespace ProjeIt_Api.Controllers
         [HttpPost("update")]
         public IActionResult Update(DiagnosisHistory diagnosisHistory)
         {
+            var test = _diagnosisHistoryService.GetActivesById(diagnosisHistory.ID).FirstOrDefault();
+
+            diagnosisHistory.ModifiedDate = DateTime.Now;
+            diagnosisHistory.Status = 2;
+            diagnosisHistory.CompanyID = test.CompanyID;
+            diagnosisHistory.CreatedDate = test.CreatedDate;
             return Ok(_diagnosisHistoryService.Update(diagnosisHistory));
         }
         [HttpPost("delete")]
         public IActionResult Delete(DiagnosisHistory diagnosisHistory)
         {
+            var test = _diagnosisHistoryService.GetActivesById(diagnosisHistory.ID).FirstOrDefault();
+
+            diagnosisHistory.ModifiedDate = test.ModifiedDate;
+            diagnosisHistory.Status = 3;
+            diagnosisHistory.CompanyID = test.CompanyID;
+            diagnosisHistory.CreatedDate = test.CreatedDate;
+            diagnosisHistory.DeletedDate = DateTime.Now;
             return Ok(_diagnosisHistoryService.Delete(diagnosisHistory));
         }
     }

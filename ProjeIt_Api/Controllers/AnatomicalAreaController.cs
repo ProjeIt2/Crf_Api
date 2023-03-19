@@ -50,11 +50,24 @@ namespace ProjeIt_Api.Controllers
         [HttpPost("update")]
         public IActionResult Update(AnatomicalArea anatomicalArea)
         {
+            var test = _anatomicalAreaService.GetActivesById(anatomicalArea.ID);
+
+            anatomicalArea.ModifiedDate = DateTime.Now;
+            anatomicalArea.Status = 2;
+            anatomicalArea.CompanyID = test.CompanyID;
+            anatomicalArea.CreatedDate = test.CreatedDate;
             return Ok(_anatomicalAreaService.Update(anatomicalArea));
         }
         [HttpPost("delete")]
         public IActionResult Delete(AnatomicalArea anatomicalArea)
         {
+            var test = _anatomicalAreaService.GetActivesById(anatomicalArea.ID);
+
+            anatomicalArea.ModifiedDate = test.ModifiedDate;
+            anatomicalArea.Status = 3;
+            anatomicalArea.CompanyID = test.CompanyID;
+            anatomicalArea.CreatedDate = test.CreatedDate;
+            anatomicalArea.DeletedDate = DateTime.Now;
             return Ok(_anatomicalAreaService.Delete(anatomicalArea));
         }
     }

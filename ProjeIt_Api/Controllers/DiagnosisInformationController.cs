@@ -59,11 +59,24 @@ namespace ProjeIt_Api.Controllers
         [HttpPost("update")]
         public IActionResult Update(DiagnosisInformation diagnosisInformation)
         {
+            var test = _diagnosisInformationService.GetActivesById(diagnosisInformation.ID).FirstOrDefault();
+
+            diagnosisInformation.ModifiedDate = DateTime.Now;
+            diagnosisInformation.Status = 2;
+            diagnosisInformation.CompanyID = test.CompanyID;
+            diagnosisInformation.CreatedDate = test.CreatedDate;
             return Ok(_diagnosisInformationService.Update(diagnosisInformation));
         }
         [HttpPost("delete")]
         public IActionResult Delete(DiagnosisInformation diagnosisInformation)
         {
+            var test = _diagnosisInformationService.GetActivesById(diagnosisInformation.ID).FirstOrDefault();
+
+            diagnosisInformation.ModifiedDate = test.ModifiedDate;
+            diagnosisInformation.Status = 3;
+            diagnosisInformation.CompanyID = test.CompanyID;
+            diagnosisInformation.CreatedDate = test.CreatedDate;
+            diagnosisInformation.DeletedDate = DateTime.Now;
             return Ok(_diagnosisInformationService.Delete(diagnosisInformation));
         }
     }

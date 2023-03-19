@@ -25,9 +25,13 @@ namespace Business.Services
         {
             return _medicalStatusRepository.GetList().ToList();
         }
-        public List<MedicalStatus> GetActivesById(int CompanyID)
+        public List<MedicalStatus> GetActives(int CompanyID)
         {
             return _medicalStatusRepository.GetList(x => x.CompanyID == CompanyID && x.Status != 3).ToList();
+        }
+        public MedicalStatus GetActivesById(int id)
+        {
+            return _medicalStatusRepository.GetList(x => x.CompanyID == id && x.Status != 3).FirstOrDefault();
         }
         public string Add(MedicalStatus medicalStatus)
         {

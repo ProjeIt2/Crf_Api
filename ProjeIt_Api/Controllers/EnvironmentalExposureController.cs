@@ -44,11 +44,24 @@ namespace ProjeIt_Api.Controllers
         [HttpPost("update")]
         public IActionResult Update(EnvironmentalExposure environmentalExposure)
         {
+            var test = _environmentalExposureService.GetActivesById(environmentalExposure.ID).FirstOrDefault();
+
+            environmentalExposure.ModifiedDate = DateTime.Now;
+            environmentalExposure.Status = 2;
+            environmentalExposure.CompanyID = test.CompanyID;
+            environmentalExposure.CreatedDate = test.CreatedDate;
             return Ok(_environmentalExposureService.Update(environmentalExposure));
         }
         [HttpPost("delete")]
         public IActionResult Delete(EnvironmentalExposure environmentalExposure)
         {
+            var test = _environmentalExposureService.GetActivesById(environmentalExposure.ID).FirstOrDefault();
+
+            environmentalExposure.ModifiedDate = test.ModifiedDate;
+            environmentalExposure.Status = 3;
+            environmentalExposure.CompanyID = test.CompanyID;
+            environmentalExposure.CreatedDate = test.CreatedDate;
+            environmentalExposure.DeletedDate = DateTime.Now;
             return Ok(_environmentalExposureService.Delete(environmentalExposure));
         }
     }

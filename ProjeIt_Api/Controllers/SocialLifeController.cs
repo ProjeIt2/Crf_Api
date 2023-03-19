@@ -47,13 +47,27 @@ namespace ProjeIt_Api.Controllers
             return Ok(_socialLifeService.Add(socialLife));
         }
         [HttpPost("update")]
-        public IActionResult Update(SocialLife socialLife)
-        {
+        public IActionResult Update(SocialLife socialLife) {
+        
+            
+            var test = _socialLifeService.GetActivesById(socialLife.ID).FirstOrDefault();
+
+            socialLife.ModifiedDate = DateTime.Now;
+            socialLife.Status = 2;
+            socialLife.CompanyID = test.CompanyID;
+            socialLife.CreatedDate = test.CreatedDate;
             return Ok(_socialLifeService.Update(socialLife));
         }
         [HttpPost("delete")]
         public IActionResult Delete(SocialLife socialLife)
         {
+            var test = _socialLifeService.GetActivesById(socialLife.ID).FirstOrDefault();
+
+            socialLife.ModifiedDate = test.ModifiedDate;
+            socialLife.Status = 3;
+            socialLife.CompanyID = test.CompanyID;
+            socialLife.CreatedDate = test.CreatedDate;
+            socialLife.DeletedDate = DateTime.Now;
             return Ok(_socialLifeService.Delete(socialLife));
         }
     }

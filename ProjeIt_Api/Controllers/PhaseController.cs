@@ -48,13 +48,26 @@ namespace ProjeIt_Api.Controllers
             return Ok(_phaseService.Add(phase));
         }
         [HttpPost("update")]
-        public IActionResult Update(Phase phase)
+        public IActionResult Update(Phase phase) 
         {
+            var test = _phaseService.GetActivesById(phase.ID);
+
+            phase.ModifiedDate = DateTime.Now;
+            phase.Status = 2;
+            phase.CompanyID = test.CompanyID;
+            phase.CreatedDate = test.CreatedDate;
             return Ok(_phaseService.Update(phase));
         }
         [HttpPost("delete")]
         public IActionResult Delete(Phase phase)
-        {
+        { 
+         var test = _phaseService.GetActivesById(phase.ID);
+
+        phase.ModifiedDate = test.ModifiedDate;
+            phase.Status = 3;
+            phase.CompanyID = test.CompanyID;
+            phase.CreatedDate = test.CreatedDate;
+            phase.DeletedDate = DateTime.Now;
             return Ok(_phaseService.Delete(phase));
         }
     }

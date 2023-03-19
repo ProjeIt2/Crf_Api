@@ -25,9 +25,13 @@ namespace Business.Services
         {
             return _iCD10CodeRepository.GetList().ToList();
         }
-        public List<ICD10Code> GetActivesById(int CompanyID)
+        public List<ICD10Code> GetActives(int CompanyID)
         {
             return _iCD10CodeRepository.GetList(x => x.CompanyID == CompanyID && x.Status != 3).ToList();
+        }
+        public ICD10Code GetActivesById(int id)
+        {
+            return _iCD10CodeRepository.Get(x => x.ID == id && x.Status != 3);
         }
         public string Add(ICD10Code iCD10Code)
         {

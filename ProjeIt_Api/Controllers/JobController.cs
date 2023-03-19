@@ -44,11 +44,24 @@ namespace ProjeIt_Api.Controllers
         [HttpPost("update")]
         public IActionResult Update(Job job)
         {
+            var test = _jobService.GetActivesById(job.ID).FirstOrDefault();
+
+            job.ModifiedDate = DateTime.Now;
+            job.Status = 2;
+            job.CompanyID = test.CompanyID;
+            job.CreatedDate = test.CreatedDate;
             return Ok(_jobService.Update(job));
         }
         [HttpPost("delete")]
         public IActionResult Delete(Job job)
         {
+            var test = _jobService.GetActivesById(job.ID).FirstOrDefault();
+
+            job.ModifiedDate = test.ModifiedDate;
+            job.Status = 3;
+            job.CompanyID = test.CompanyID;
+            job.CreatedDate = test.CreatedDate;
+            job.DeletedDate = DateTime.Now;
             return Ok(_jobService.Delete(job));
         }
     }

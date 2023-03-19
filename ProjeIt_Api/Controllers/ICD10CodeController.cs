@@ -23,10 +23,16 @@ namespace ProjeIt_Api.Controllers
         {
             return Ok(_iCD10CodeService.GetList());
         }
-        [HttpGet("GetActivesById")]
-        public IActionResult GetActivesById(int CompanyID)
+        [HttpGet("getActives")]
+        public IActionResult GetActives()
         {
-            return Ok(_iCD10CodeService.GetById(CompanyID));
+            int CompanyID = 2;
+            return Ok(_iCD10CodeService.GetActives(CompanyID));
+        }
+        [HttpGet("getActivesById")]
+        public IActionResult GetActivesById(int id)
+        {
+            return Ok(_iCD10CodeService.GetActivesById(id));
         }
         [HttpGet("getbyid")]
         public IActionResult GetById(int ID)
@@ -44,11 +50,24 @@ namespace ProjeIt_Api.Controllers
         [HttpPost("update")]
         public IActionResult Update(ICD10Code iCD10Code)
         {
+            var test = _iCD10CodeService.GetActivesById(iCD10Code.ID);
+
+            iCD10Code.ModifiedDate = DateTime.Now;
+            iCD10Code.Status = 2;
+            iCD10Code.CompanyID = test.CompanyID;
+            iCD10Code.CreatedDate = test.CreatedDate;
             return Ok(_iCD10CodeService.Update(iCD10Code));
         }
         [HttpPost("delete")]
         public IActionResult Delete(ICD10Code iCD10Code)
         {
+            var test = _iCD10CodeService.GetActivesById(iCD10Code.ID);
+
+            iCD10Code.ModifiedDate = test.ModifiedDate;
+            iCD10Code.Status = 3;
+            iCD10Code.CompanyID = test.CompanyID;
+            iCD10Code.CreatedDate = test.CreatedDate;
+            iCD10Code.DeletedDate = DateTime.Now;
             return Ok(_iCD10CodeService.Delete(iCD10Code));
         }
     }

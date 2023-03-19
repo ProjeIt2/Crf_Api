@@ -45,18 +45,33 @@ namespace ProjeIt_Api.Controllers
         [HttpPost("add")]
         public IActionResult Add(DonorMedicalHistory donorMedicalHistory)
         {
+
             donorMedicalHistory.CreatedDate = DateTime.Now;
             donorMedicalHistory.Status = 1;
+            donorMedicalHistory.CompanyID = 2;
             return Ok(_donorMedicalHistoryService.Add(donorMedicalHistory));
         }
         [HttpPost("update")]
         public IActionResult Update(DonorMedicalHistory donorMedicalHistory)
         {
+            var test = _donorMedicalHistoryService.GetActivesById(donorMedicalHistory.ID).FirstOrDefault();
+
+            donorMedicalHistory.ModifiedDate = DateTime.Now;
+            donorMedicalHistory.Status = 2;
+            donorMedicalHistory.CreatedDate = test.CreatedDate;
+            donorMedicalHistory.CompanyID = test.CompanyID;
             return Ok(_donorMedicalHistoryService.Update(donorMedicalHistory));
         }
         [HttpPost("delete")]
         public IActionResult Delete(DonorMedicalHistory donorMedicalHistory)
         {
+            var test = _donorMedicalHistoryService.GetActivesById(donorMedicalHistory.ID).FirstOrDefault();
+
+            donorMedicalHistory.ModifiedDate = test.ModifiedDate;
+            donorMedicalHistory.Status = 3;
+            donorMedicalHistory.CompanyID = test.CompanyID;
+            donorMedicalHistory.CreatedDate = test.CreatedDate;
+            donorMedicalHistory.DeletedDate = DateTime.Now;
             return Ok(_donorMedicalHistoryService.Delete(donorMedicalHistory));
         }
     }
