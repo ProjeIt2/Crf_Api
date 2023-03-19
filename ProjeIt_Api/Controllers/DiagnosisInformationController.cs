@@ -39,9 +39,15 @@ namespace ProjeIt_Api.Controllers
 
         }
         [HttpGet("GetActivesById")]
-        public IActionResult GetActivesById(int CompanyID)
+        public IActionResult GetActivesById(int id)
         {
-            return Ok(_diagnosisInformationService.GetById(CompanyID));
+            return Ok(_diagnosisInformationService.GetActivesById(id));
+        }
+        [HttpGet("getActives")]
+        public IActionResult GetActives()
+        {
+            int CompanyID = 2;
+            return Ok(_diagnosisInformationService.GetActives(CompanyID));
         }
         [HttpGet("getbyid")]
         public IActionResult GetById(int ID)
@@ -59,7 +65,7 @@ namespace ProjeIt_Api.Controllers
         [HttpPost("update")]
         public IActionResult Update(DiagnosisInformation diagnosisInformation)
         {
-            var test = _diagnosisInformationService.GetActivesById(diagnosisInformation.ID).FirstOrDefault();
+            var test = _diagnosisInformationService.GetActivesById(diagnosisInformation.ID);
 
             diagnosisInformation.ModifiedDate = DateTime.Now;
             diagnosisInformation.Status = 2;
@@ -70,7 +76,7 @@ namespace ProjeIt_Api.Controllers
         [HttpPost("delete")]
         public IActionResult Delete(DiagnosisInformation diagnosisInformation)
         {
-            var test = _diagnosisInformationService.GetActivesById(diagnosisInformation.ID).FirstOrDefault();
+            var test = _diagnosisInformationService.GetActivesById(diagnosisInformation.ID);
 
             diagnosisInformation.ModifiedDate = test.ModifiedDate;
             diagnosisInformation.Status = 3;

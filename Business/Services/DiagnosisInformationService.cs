@@ -35,11 +35,14 @@ namespace Business.Services
         {
             return _diagnosisInformationRepository.GetListDiagnosisInformationsID(id);
         }
-        public List<DiagnosisInformation> GetActivesById(int CompanyID)
+        public List<DiagnosisInformation> GetActives(int CompanyID)
         {
             return _diagnosisInformationRepository.GetList(x=>x.CompanyID==CompanyID&&x.Status!=3).ToList();
         }
-  
+        public DiagnosisInformation GetActivesById(int id)
+        {
+            return _diagnosisInformationRepository.GetList(x => x.ID == id && x.Status != 3).FirstOrDefault();
+        }
         public string Add(DiagnosisInformation appUser)
         {
             appUser.CreatedDate = DateTime.Now;

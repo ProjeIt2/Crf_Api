@@ -49,9 +49,9 @@ namespace ProjeIt_Api.Controllers
         [HttpPost("update")]
         public IActionResult Update(PatientInformation patientInformation)
         { 
-             var test = _patientInformationService.GetActivesById(patientInformation.ID).FirstOrDefault();
-
-        patientInformation.ModifiedDate = DateTime.Now;
+             var test = _patientInformationService.GetByFormId((int)patientInformation.FormID);
+            patientInformation.ID = test.ID; ;
+            patientInformation.ModifiedDate = DateTime.Now;
             patientInformation.Status =2;
             patientInformation.CompanyID = test.CompanyID;
             patientInformation.CreatedDate = test.CreatedDate;
@@ -60,9 +60,9 @@ namespace ProjeIt_Api.Controllers
         [HttpPost("delete")]
         public IActionResult Delete(PatientInformation patientInformation)
     {
-        var test = _patientInformationService.GetActivesById(patientInformation.ID).FirstOrDefault();
-
-        patientInformation.ModifiedDate = test.ModifiedDate;
+        var test = _patientInformationService.GetByFormId((int)patientInformation.FormID);
+            patientInformation.ID = test.ID; ;
+            patientInformation.ModifiedDate = test.ModifiedDate;
         patientInformation.Status = 3;
         patientInformation.CompanyID = test.CompanyID;
         patientInformation.CreatedDate = test.CreatedDate;

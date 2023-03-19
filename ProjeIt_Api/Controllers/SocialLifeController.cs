@@ -48,11 +48,11 @@ namespace ProjeIt_Api.Controllers
         }
         [HttpPost("update")]
         public IActionResult Update(SocialLife socialLife) {
-        
-            
-            var test = _socialLifeService.GetActivesById(socialLife.ID).FirstOrDefault();
 
-            socialLife.ModifiedDate = DateTime.Now;
+
+            var test = _socialLifeService.GetByFormId((int)socialLife.FormID);
+            socialLife.ID = test.ID;
+           socialLife.ModifiedDate = DateTime.Now;
             socialLife.Status = 2;
             socialLife.CompanyID = test.CompanyID;
             socialLife.CreatedDate = test.CreatedDate;
@@ -61,8 +61,8 @@ namespace ProjeIt_Api.Controllers
         [HttpPost("delete")]
         public IActionResult Delete(SocialLife socialLife)
         {
-            var test = _socialLifeService.GetActivesById(socialLife.ID).FirstOrDefault();
-
+            var test = _socialLifeService.GetByFormId((int)socialLife.FormID);
+            socialLife.ID = test.ID;
             socialLife.ModifiedDate = test.ModifiedDate;
             socialLife.Status = 3;
             socialLife.CompanyID = test.CompanyID;

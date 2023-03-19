@@ -12,7 +12,8 @@ namespace Business.Services.Interfeces
     {
         DiagnosisInformation GetById(int Id);
         List<DiagnosisInformation> GetList();
-        List<DiagnosisInformation> GetActivesById(int CompanyID);
+        List<DiagnosisInformation> GetActives(int CompanyID);
+       DiagnosisInformation GetActivesById(int id);
         List<DiagnosisInformationVM> GetListDiagnosisInformations(int FormID);
         DiagnosisInformationVM GetListDiagnosisInformationsID(int id);
         string Add(DiagnosisInformation diagnosisInformation);
