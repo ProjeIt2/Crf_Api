@@ -15,8 +15,8 @@ namespace Entities.Dtos
         public DateTime? DiagnosisHistoryDate { get; set; }
         public string Barcode { get; set; }
         public int? FormID { get; set; }
-        public int DiseaseID { get; set; }
-        public string DiseaseName { get; set; }
+        public int DiagnosisID { get; set; }
+        public string DiagnosisName { get; set; }
         public int AffinityID { get; set; }
         public string AffinityType { get; set; }
 

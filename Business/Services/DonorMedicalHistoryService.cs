@@ -31,11 +31,14 @@ namespace Business.Services
         {
             return new List<DonorMedicalHistoryVM>(_donorMedicalHistoryRepository.GetListDonorMedicalHistorys(FormID).ToList());
         }
-        public List<DonorMedicalHistory> GetActivesById(int CompanyID)
+        public List<DonorMedicalHistory> GetActives(int CompanyID)
         {
             return _donorMedicalHistoryRepository.GetList(x=>x.CompanyID==CompanyID&&x.Status!=3).ToList();
         }
-  
+        public DonorMedicalHistory GetActivesById(int id)
+        {
+            return _donorMedicalHistoryRepository.GetList(x => x.ID == id && x.Status != 3).FirstOrDefault();
+        }
         public string Add(DonorMedicalHistory appUser)
         {
             appUser.CreatedDate = DateTime.Now;

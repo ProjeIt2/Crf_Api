@@ -31,10 +31,15 @@ namespace ProjeIt_Api.Controllers
             return Ok(_donorMedicalHistoryService.GetListDonorMedicalHistorys(FormID));
 
         }
-        [HttpGet("GetActivesById")]
-        public IActionResult GetActivesById(int CompanyID)
+        [HttpGet("getActives")]
+        public IActionResult GetActives(int CompanyID)
         {
-            return Ok(_donorMedicalHistoryService.GetById(CompanyID));
+            return Ok(_donorMedicalHistoryService.GetActives(CompanyID));
+        }
+        [HttpGet("getActivesById")]
+        public IActionResult GetActivesById(int id)
+        {
+            return Ok(_donorMedicalHistoryService.GetActivesById(id));
         }
         [HttpGet("getbyid")]
         public IActionResult GetById(int ID)
@@ -54,7 +59,7 @@ namespace ProjeIt_Api.Controllers
         [HttpPost("update")]
         public IActionResult Update(DonorMedicalHistory donorMedicalHistory)
         {
-            var test = _donorMedicalHistoryService.GetActivesById(donorMedicalHistory.ID).FirstOrDefault();
+            var test = _donorMedicalHistoryService.GetActivesById(donorMedicalHistory.ID);
 
             donorMedicalHistory.ModifiedDate = DateTime.Now;
             donorMedicalHistory.Status = 2;
@@ -65,7 +70,7 @@ namespace ProjeIt_Api.Controllers
         [HttpPost("delete")]
         public IActionResult Delete(DonorMedicalHistory donorMedicalHistory)
         {
-            var test = _donorMedicalHistoryService.GetActivesById(donorMedicalHistory.ID).FirstOrDefault();
+            var test = _donorMedicalHistoryService.GetActivesById(donorMedicalHistory.ID);
 
             donorMedicalHistory.ModifiedDate = test.ModifiedDate;
             donorMedicalHistory.Status = 3;

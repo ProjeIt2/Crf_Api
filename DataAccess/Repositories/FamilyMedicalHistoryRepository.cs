@@ -32,8 +32,8 @@ namespace DataAccess.Repositories
                                   FormID = _famMedHis.FormID,
                                   Barcode = _form.Barcode,
                                   DiagnosisHistoryDate = _famMedHis.DiagnosisDate,
-                                  DiseaseID = _diagHis.ID,
-                                  DiseaseName = _diagHis.DiagnosisName,
+                                  DiagnosisID = _diagHis.ID,
+                                  DiagnosisName = _diagHis.DiagnosisName,
                                   AffinityType = _affStat.AffinityType,
                                   AffinityID = _affStat.ID,
 

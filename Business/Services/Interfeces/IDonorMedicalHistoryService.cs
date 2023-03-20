@@ -12,7 +12,8 @@ namespace Business.Services.Interfeces
     {
         DonorMedicalHistory GetById(int Id);
         List<DonorMedicalHistory> GetList();
-        List<DonorMedicalHistory> GetActivesById(int CompanyID);
+        List<DonorMedicalHistory> GetActives(int CompanyID);
+        DonorMedicalHistory GetActivesById(int id);
         List<DonorMedicalHistoryVM> GetListDonorMedicalHistorys(int FormID);
         string Add(DonorMedicalHistory donorMedicalHistory);
         string Update(DonorMedicalHistory donorMedicalHistory);

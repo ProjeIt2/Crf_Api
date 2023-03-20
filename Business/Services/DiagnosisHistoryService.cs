@@ -25,9 +25,13 @@ namespace Business.Services
         {
             return _diagnosisHistoryRepository.GetList().ToList();
         }
-        public List<DiagnosisHistory> GetActivesById(int CompanyID)
+        public List<DiagnosisHistory> GetActives(int CompanyID)
         {
             return _diagnosisHistoryRepository.GetList(x => x.CompanyID == CompanyID && x.Status != 3).ToList();
+        }
+        public DiagnosisHistory GetActivesById(int id)
+        {
+            return _diagnosisHistoryRepository.GetList(x => x.ID == id && x.Status != 3).FirstOrDefault();
         }
         public string Add(DiagnosisHistory diagnosisHistory)
         {

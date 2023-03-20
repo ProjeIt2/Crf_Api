@@ -26,7 +26,8 @@ namespace DataAccess.Repositories
                               join _tumArea in context.TumorAreas on _clinStat.TumorAreaID equals _tumArea.ID
                               join _tnm in context.TNMs on _clinStat.TNMID equals _tnm.ID
                               join _tumTyp in context.TumorTypes on _clinStat.TumorTypeID equals _tumTyp.ID
-                              join _phase in context.Phases on _clinStat.PhaseID equals _phase.ID
+                              join _phase in context.Phases on _clinStat.PhaseID equals _phase.ID into gj
+                              from x in gj.DefaultIfEmpty()
                               join _docReqRep in context.DoctorRequestedReports on _clinStat.DoctorRequestedReportID equals _docReqRep.ID
                               join _rep in context.Reports on _docReqRep.ReportID equals _rep.ID
                               select new ClinicalStatusVM
@@ -41,8 +42,8 @@ namespace DataAccess.Repositories
                                   TTNM = _tnm.TTNM,
                                   TumorTypeID = _tumTyp.ID,
                                   Tumor_Type = _tumTyp.Tumor_Type,
-                                  PhaseID = _phase.ID,
-                                  PhaseName = _phase.Name,
+                                  PhaseID = x != null ? x.ID : 0,
+                                  PhaseName = x != null ? x.Name : "N/A",
                                   DoctorRequestedReportID = _docReqRep.ID,
                                   ReportName = _rep.Name,
                               }).ToList();
