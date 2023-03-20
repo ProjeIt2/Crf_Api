@@ -14,7 +14,8 @@ namespace Business.Services.Interfeces
         List<ClinicalStatus> GetList();
         List<ClinicalStatus> GetActives(int CompanyID);
         ClinicalStatus GetActivesById(int id);
-        List<ClinicalStatusVM> GetListClinicalStatuss(int FormID);
+        List<ClinicalStatusVM> GetListClinicalStatuss(int FormID,int CompanyID);
+        ClinicalStatusVM GetListClinicalStatu(int id, int CompanyID);
         string Add(ClinicalStatus clinicalStatus);
         string Update(ClinicalStatus clinicalStatus);
         string Delete(ClinicalStatus clinicalStatus);

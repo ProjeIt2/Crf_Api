@@ -33,8 +33,17 @@ namespace ProjeIt_Api.Controllers
         [HttpGet("getListClinicalStatuss")]
         public IActionResult GetListClinicalStatuss(int FormID)
         {
+            int CompanyID = 2;
             var Test = _clinicalStatusService.GetList().Where(x=>x.FormID==FormID).ToList();
-            return Ok(_clinicalStatusService.GetListClinicalStatuss(FormID));
+            return Ok(_clinicalStatusService.GetListClinicalStatuss(FormID, CompanyID));
+
+        }
+        [HttpGet("getListClinicalStatu")]
+        public IActionResult GetListClinicalStatu(int id)
+        {
+            int CompanyID = 2;
+            //var Test = _clinicalStatusService.GetList().Where(x => x.FormID == id).ToList();
+            return Ok(_clinicalStatusService.GetListClinicalStatu(id, CompanyID));
 
         }
         [HttpGet("getActivesById")]

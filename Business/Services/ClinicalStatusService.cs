@@ -31,10 +31,15 @@ namespace Business.Services
         {
             return _clinicalStatusRepository.GetList(x=>x.CompanyID==2 && x.Status != 3).ToList();
         }
-        public List<ClinicalStatusVM> GetListClinicalStatuss(int FormID)
+        public List<ClinicalStatusVM> GetListClinicalStatuss(int FormID,int CompanyID)
         {
             var test = _clinicalStatusRepository.GetList(x => x.FormID == FormID && x.Status != 3).ToList();
-            return new List<ClinicalStatusVM>(_clinicalStatusRepository.GetListClinicalStatuss(FormID).ToList());
+            return new List<ClinicalStatusVM>(_clinicalStatusRepository.GetListClinicalStatuss(FormID, CompanyID).ToList());
+        }
+        public ClinicalStatusVM GetListClinicalStatu(int id, int CompanyID)
+        {
+            var test = _clinicalStatusRepository.GetList(x => x.ID == id && x.Status != 3).ToList();
+            return  _clinicalStatusRepository.GetListClinicalStatu(id, CompanyID);
         }
         public ClinicalStatus GetActivesById(int id)
         {
