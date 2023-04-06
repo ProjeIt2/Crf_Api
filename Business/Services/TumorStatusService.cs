@@ -67,7 +67,7 @@ namespace Business.Services
             appUser.ModifiedDate = User.ModifiedDate;
             appUser.DeletedDate = DateTime.Now;
             appUser.Status = 3;
-            _tumorStatusRepository.Delete(appUser);
+            _tumorStatusRepository.Update(appUser);
             return "Ok";
         }
 

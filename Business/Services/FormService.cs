@@ -59,7 +59,7 @@ namespace Business.Services
             appUser.ModifiedDate = User.ModifiedDate;
             appUser.DeletedDate = DateTime.Now;
             appUser.Status = 3;
-            _kullaniciRepository.Delete(appUser);
+            _kullaniciRepository.Update(appUser);
             return "Ok";
         }
 

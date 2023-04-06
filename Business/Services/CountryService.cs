@@ -52,7 +52,7 @@ namespace Business.Services
             country.ModifiedDate = User.ModifiedDate;
             country.DeletedDate = DateTime.Now;
             country.Status = 3;
-            _countryRepository.Delete(country);
+            _countryRepository.Update(country);
             return "Ok";
         }
 

@@ -49,10 +49,10 @@ namespace ProjeIt_Api.Controllers
         {
             return Ok(_uploadFileService.GetById(ID));
         }
-
-        [HttpPost("add")]
-        public IActionResult Add([FromForm] UploadFileVM uploadFile
-            //IFormFile formFile, int formId
+ 
+        [HttpPatch("add")]
+        public IActionResult Add( [FromForm] UploadFileVM uploadFile
+                                  //IFormFile formFile, int formId
             )
         {
             var UF = new UploadFile();

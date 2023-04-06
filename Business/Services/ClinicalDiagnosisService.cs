@@ -54,7 +54,7 @@ namespace Business.Services
             clinicalDiagnosis.ModifiedDate = User.ModifiedDate;
             clinicalDiagnosis.DeletedDate = DateTime.Now;
             clinicalDiagnosis.Status = 3;
-            _clinicalDiagnosisRepository.Delete(clinicalDiagnosis);
+            _clinicalDiagnosisRepository.Update(clinicalDiagnosis);
             return "Ok";
         }
 

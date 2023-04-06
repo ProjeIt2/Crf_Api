@@ -73,7 +73,7 @@ namespace Business.Services
         }
         public string Delete(AppUser appUser)
         {
-            _appUserRepository.Delete(appUser);
+            _appUserRepository.Update(appUser);
             return "Ok";
         }
 

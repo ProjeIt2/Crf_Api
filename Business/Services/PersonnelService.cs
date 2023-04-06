@@ -54,7 +54,7 @@ namespace Business.Services
             personnel.ModifiedDate = User.ModifiedDate;
             personnel.DeletedDate = DateTime.Now;
             personnel.Status = 3;
-            _personnelRepository.Delete(personnel);
+            _personnelRepository.Update(personnel);
             return "Ok";
         }
 

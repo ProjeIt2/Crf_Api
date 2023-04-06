@@ -59,7 +59,7 @@ namespace Business.Services
             doctor.ModifiedDate = User.ModifiedDate;
             doctor.DeletedDate = DateTime.Now;
             doctor.Status = 3;
-            _doctorRepository.Delete(doctor);
+            _doctorRepository.Update(doctor);
             return "Ok";
         }
 

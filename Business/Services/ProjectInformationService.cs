@@ -54,7 +54,7 @@ namespace Business.Services
             projectInformation.ModifiedDate = User.ModifiedDate;
             projectInformation.DeletedDate = DateTime.Now;
             projectInformation.Status = 3;
-            _projectInformationRepository.Delete(projectInformation);
+            _projectInformationRepository.Update(projectInformation);
             return "Ok";
         }
 
