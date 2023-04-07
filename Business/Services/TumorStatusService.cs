@@ -65,7 +65,7 @@ namespace Business.Services
             var Data = _tumorStatusRepository.Get(a => a.ID == appUser.ID);
             Data.DeletedDate = DateTime.Now;
             Data.Status = 3;
-            _tumorStatusRepository.Delete(appUser);
+            _tumorStatusRepository.Delete(Data);
             return "Ok";
         }
 

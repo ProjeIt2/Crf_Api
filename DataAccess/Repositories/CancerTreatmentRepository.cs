@@ -21,13 +21,13 @@ namespace DataAccess.Repositories
             var _result = new List<CancerTreatmentVM>();
             using (var context = new ProjeItContext())
             {
-                var result = (from _cancTret in context.CancerTreatments.Where(x => x.FormID == FormID)
+                var result = (from _cancTret in context.CancerTreatments.Where(x => x.FormID == FormID&&x.Status!=3)
                          join _form in context.Forms on _cancTret.FormID equals _form.ID
                               join _tret in context.Treatments on _cancTret.TreatmentID equals _tret.ID
                              
 
                               select new CancerTreatmentVM
-                              {
+                              {Status =_cancTret.Status,
                                   ID = _cancTret.ID,
                                   FormID = _cancTret.FormID,
                                   TreatmentStartDate= _cancTret.TreatmentStartDate,
@@ -52,7 +52,7 @@ namespace DataAccess.Repositories
             var _result = new CancerTreatmentVM();
             using (var context = new ProjeItContext())
             {
-                var result = (from _cancTret in context.CancerTreatments.Where(x => x.ID == id)
+                var result = (from _cancTret in context.CancerTreatments.Where(x => x.ID == id&&x.Status!=3)
                               join _form in context.Forms on _cancTret.FormID equals _form.ID
                               join _tret in context.Treatments on _cancTret.TreatmentID equals _tret.ID
 

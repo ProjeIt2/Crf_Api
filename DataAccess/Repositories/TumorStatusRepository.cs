@@ -21,7 +21,7 @@ namespace DataAccess.Repositories
             var _result = new List<TumorStatusVM>();
             using (var context = new ProjeItContext())
             {
-                var result = (from _tumStat in context.TumorStatus.Where(x => x.FormID == FormID)
+                var result = (from _tumStat in context.TumorStatus.Where(x => x.FormID == FormID&&x.Status!=3)
                          join _form in context.Forms on _tumStat.FormID equals _form.ID
                               join _tumArea in context.TumorAreas on _tumStat.TumorAreaID equals _tumArea.ID
                               join _tnm in context.TNMs on _tumStat.TNMID equals _tnm.ID
@@ -29,6 +29,7 @@ namespace DataAccess.Repositories
                               join _phase in context.Phases on _tumStat.PhaseID equals _phase.ID
                               select new TumorStatusVM
                               {
+                                  Status=_tumStat.Status,
                                   ID = _tumStat.ID,
                                   FormID = _tumStat.FormID,
                                   Barcode = _form.Barcode,

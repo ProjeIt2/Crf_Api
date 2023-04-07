@@ -15,5 +15,6 @@ namespace Entities.Dtos
         public string Barcode { get; set; }
         public int? VirusID { get; set; }
         public string VirusName { get; set; }
+        public int Status { get; set; }
     }
 }

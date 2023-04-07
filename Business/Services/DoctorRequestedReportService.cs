@@ -29,6 +29,10 @@ namespace Business.Services
         {
             return _doctorRequestedReportRepository.GetList(x=>x.CompanyID== CompanyID && x.Status != 3).ToList();
         }
+        public List<DoctorRequestedReport> GetProjectID(int ProjectID)
+        {
+            return _doctorRequestedReportRepository.GetList(x => x.ProjectInformationID == ProjectID && x.Status != 3).ToList();
+        }
         public DoctorRequestedReport GetActivesById(int id)
         {
             return _doctorRequestedReportRepository.Get(x => x.ID == id && x.Status != 3);

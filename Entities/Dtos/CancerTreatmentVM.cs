@@ -17,5 +17,6 @@ namespace Entities.Dtos
         public string Barcode { get; set; }
         public int? TreatmentID { get; set; }
         public string TreatmentType { get; set; }
+        public int Status { get; set; }
     }
 }

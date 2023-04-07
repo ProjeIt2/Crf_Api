@@ -12,6 +12,7 @@ namespace Business.Services.Interfeces
         DoctorRequestedReport GetById(int Id);
         List<DoctorRequestedReport> GetList();
         List<DoctorRequestedReport> GetActives(int CompanyID);
+        List<DoctorRequestedReport> GetProjectID(int ProjectID);
         DoctorRequestedReport GetActivesById(int id);
         string Add(DoctorRequestedReport doctorRequestedReport);
         string Update(DoctorRequestedReport doctorRequestedReport);

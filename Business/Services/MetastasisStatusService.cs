@@ -65,7 +65,7 @@ namespace Business.Services
             var Data = _metastasisStatusRepository.Get(a => a.ID == appUser.ID);
             Data.DeletedDate = DateTime.Now;
             Data.Status = 3;
-            _metastasisStatusRepository.Delete(appUser);
+            _metastasisStatusRepository.Delete(Data);
             return "Ok";
         }
 

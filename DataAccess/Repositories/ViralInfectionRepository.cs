@@ -21,7 +21,7 @@ namespace DataAccess.Repositories
             var _result = new List<ViralInfectionVM>();
             using (var context = new ProjeItContext())
             {
-                var result = (from _viralEnf in context.ViralInfections.Where(x => x.FormID == FormID)
+                var result = (from _viralEnf in context.ViralInfections.Where(x => x.FormID == FormID&&x.Status!=3)
                               join _form in context.Forms on _viralEnf.FormID equals _form.ID
                               join _virus in context.Virus on _viralEnf.VirusID equals _virus.ID
 
@@ -30,6 +30,7 @@ namespace DataAccess.Repositories
                               {
                                   ID = _viralEnf.ID,
                                   TestStatus = _viralEnf.TestStatus,
+                                  Status=_viralEnf.Status,
                                   Result = _viralEnf.Result,
                                   FormID = _viralEnf.FormID,
                                   Barcode = _form.Barcode,

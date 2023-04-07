@@ -29,6 +29,12 @@ namespace ProjeIt_Api.Controllers
             int CompanyID=2;
             return Ok(_doctorRequestedReportService.GetActives((int)CompanyID));
         }
+        [HttpGet("getProjectID")]
+        public IActionResult GetProjectID(int ProjectID)
+        {
+        
+            return Ok(_doctorRequestedReportService.GetProjectID((int)ProjectID));
+        }
         [HttpGet("getActivesById")]
         public IActionResult GetActivesById(int CompanyID)
         {

@@ -29,5 +29,6 @@ namespace Entities.Dtos
         public string TTNM { get; set; }
         public int? TumorTypeID { get; set; }
         public string Tumor_Type { get; set; }
+        public int Status { get; set; }
     }
 }

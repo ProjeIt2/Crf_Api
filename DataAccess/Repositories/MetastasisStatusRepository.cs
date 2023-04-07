@@ -21,7 +21,7 @@ namespace DataAccess.Repositories
             var _result = new List<MetastasisStatusVM>();
             using (var context = new ProjeItContext())
             {
-                var result = (from _metasStat in context.MetastasisStatus.Where(x => x.FormID == FormID)
+                var result = (from _metasStat in context.MetastasisStatus.Where(x => x.FormID == FormID&&x.Status!=3)
                               join _form in context.Forms on _metasStat.FormID equals _form.ID
                               join _metastasis in context.Metastasises on _metasStat.MetastasisID equals _metastasis.ID
                               join _lymphNode in context.LymphNodes on _metasStat.LymphNodeID equals _lymphNode.ID
@@ -29,6 +29,7 @@ namespace DataAccess.Repositories
                               select new MetastasisStatusVM
                               {
                                   ID = _metasStat.ID,
+                                  Status=_metasStat.Status,
                                   LymphNoduOperation = _metasStat.LymphNoduOperation,
                                   LymphNoduMetastasis = _metasStat.LymphNoduMetastasis,
                                   DistantMetastasisExist = _metasStat.DistantMetastasisExist,

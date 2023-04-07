@@ -75,8 +75,7 @@ namespace ProjeIt_Api.Controllers
         }
         [HttpPost("delete")]
         public IActionResult Delete(TumorStatus tumorStatus)
-        {
-                     return Ok(_tumorStatusService.Delete(tumorStatus));
+        {   return Ok(_tumorStatusService.Delete(tumorStatus));
         }
     }
 }

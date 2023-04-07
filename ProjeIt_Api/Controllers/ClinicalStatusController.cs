@@ -14,9 +14,13 @@ namespace ProjeIt_Api.Controllers
     public class ClinicalStatusController : ControllerBase
     {
         private readonly IClinicalStatusService _clinicalStatusService;
-        public ClinicalStatusController(IClinicalStatusService clinicalStatusService)
+        private readonly IFormService _formService;
+        private readonly IDoctorRequestedReportService _doctorRequestedReportService;
+        public ClinicalStatusController(IClinicalStatusService clinicalStatusService, IFormService formService, IDoctorRequestedReportService doctorRequestedReportService)
         {
             _clinicalStatusService = clinicalStatusService;
+            _formService = formService;
+            _doctorRequestedReportService = doctorRequestedReportService;
         }
 
         [HttpGet("getall")]
@@ -59,9 +63,12 @@ namespace ProjeIt_Api.Controllers
 
         [HttpPost("add")]
         public IActionResult Add(ClinicalStatus clinicalStatus)
-        {
+        {//project ID Yakalamak için FormID verileri çekildi
+            var form = _formService.GetById((int)clinicalStatus.FormID);
+            var docdorreq = _doctorRequestedReportService.GetList().Where(x => x.ProjectInformationID == form.ProjectInformationID && x.ReportID == clinicalStatus.DoctorRequestedReportID).FirstOrDefault();
             clinicalStatus.CreatedDate = DateTime.Now;
             clinicalStatus.Status = 1;
+            clinicalStatus.DoctorRequestedReportID = docdorreq.ID;
             return Ok(_clinicalStatusService.Add(clinicalStatus));
         }
         [HttpPost("update")]

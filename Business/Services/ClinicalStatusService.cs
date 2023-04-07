@@ -49,9 +49,14 @@ namespace Business.Services
         public string Add(ClinicalStatus appUser)
         {
             appUser.CreatedDate = DateTime.Now;
-
+            if (appUser.DoctorRequestedReportID != null) { 
             _clinicalStatusRepository.Add(appUser);
             return "Ok";
+            }
+            else
+            {
+                return "not fount doctor request";
+            }
         }
         public string Update(ClinicalStatus appUser)
         {

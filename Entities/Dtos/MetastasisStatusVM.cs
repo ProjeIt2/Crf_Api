@@ -9,6 +9,7 @@ namespace Entities.Dtos
   public  class MetastasisStatusVM
     {
         public int ID { get; set; }
+        public int Status { get; set; }
         public string LymphNoduOperation { get; set; }
         public string LymphNoduMetastasis { get; set; }
         public string DistantMetastasisExist { get; set; }
