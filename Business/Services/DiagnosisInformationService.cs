@@ -37,7 +37,7 @@ namespace Business.Services
         }
         public List<DiagnosisInformation> GetActives(int CompanyID)
         {
-            return _diagnosisInformationRepository.GetList(x=>x.CompanyID==CompanyID&&x.Status!=3).ToList();
+            return _diagnosisInformationRepository.GetList(x => x.CompanyID == CompanyID && x.Status != 3).ToList();
         }
         public DiagnosisInformation GetActivesById(int id)
         {
@@ -52,7 +52,7 @@ namespace Business.Services
         }
         public string Update(DiagnosisInformation appUser)
         {
-            var User = _diagnosisInformationRepository.Get(a => a.ID== appUser.ID);
+            var User = _diagnosisInformationRepository.Get(a => a.ID == appUser.ID);
             appUser.CreatedDate = User.CreatedDate;
             appUser.ModifiedDate = DateTime.Now;
             appUser.Status = 2;
@@ -61,12 +61,10 @@ namespace Business.Services
         }
         public string Delete(DiagnosisInformation appUser)
         {
-            var User = _diagnosisInformationRepository.Get(a => a.ID == appUser.ID);
-            appUser.CreatedDate = User.CreatedDate;
-            appUser.ModifiedDate = User.ModifiedDate;
-            appUser.DeletedDate = DateTime.Now;
-            appUser.Status = 3;
-            _diagnosisInformationRepository.Update(appUser);
+            var Data = _diagnosisInformationRepository.Get(a => a.ID == appUser.ID);
+            Data.DeletedDate = DateTime.Now;
+            Data.Status = 3;
+            _diagnosisInformationRepository.Delete(Data);
             return "Ok";
         }
 

@@ -67,14 +67,7 @@ namespace ProjeIt_Api.Controllers
         [HttpPost("delete")]
         public IActionResult Delete(GynecologicalHistory gynecologicalHistory)
         {
-            var test = _gynecologicalHistoryService.GetActivesById(gynecologicalHistory.ID);
-
-            gynecologicalHistory.ModifiedDate = test.ModifiedDate;
-            gynecologicalHistory.Status = 3;
-            gynecologicalHistory.CompanyID = test.CompanyID;
-            gynecologicalHistory.CreatedDate = test.CreatedDate;
-            gynecologicalHistory.DeletedDate = DateTime.Now;
-            return Ok(_gynecologicalHistoryService.Delete(gynecologicalHistory));
+             return Ok(_gynecologicalHistoryService.Delete(gynecologicalHistory));
         }
     }
 }

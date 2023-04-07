@@ -76,13 +76,6 @@ namespace ProjeIt_Api.Controllers
         [HttpPost("delete")]
         public IActionResult Delete(DiagnosisInformation diagnosisInformation)
         {
-            var test = _diagnosisInformationService.GetActivesById(diagnosisInformation.ID);
-
-            diagnosisInformation.ModifiedDate = test.ModifiedDate;
-            diagnosisInformation.Status = 3;
-            diagnosisInformation.CompanyID = test.CompanyID;
-            diagnosisInformation.CreatedDate = test.CreatedDate;
-            diagnosisInformation.DeletedDate = DateTime.Now;
             return Ok(_diagnosisInformationService.Delete(diagnosisInformation));
         }
     }

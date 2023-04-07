@@ -29,7 +29,7 @@ namespace Business.Services
         }
         public List<ViralInfection> GetActives(int CompanyID)
         {
-            return _viralInfectionRepository.GetList(x=>x.CompanyID==2 && x.Status != 3).ToList();
+            return _viralInfectionRepository.GetList(x => x.CompanyID == 2 && x.Status != 3).ToList();
         }
         public List<ViralInfectionVM> GetListViralInfections(int FormID)
         {
@@ -37,9 +37,9 @@ namespace Business.Services
         }
         public ViralInfection GetActivesById(int id)
         {
-            return _viralInfectionRepository.Get(x=>x.ID==id&&x.Status!=3);
+            return _viralInfectionRepository.Get(x => x.ID == id && x.Status != 3);
         }
-  
+
         public string Add(ViralInfection appUser)
         {
             appUser.CreatedDate = DateTime.Now;
@@ -49,7 +49,7 @@ namespace Business.Services
         }
         public string Update(ViralInfection appUser)
         {
-            var User = _viralInfectionRepository.Get(a => a.ID== appUser.ID);
+            var User = _viralInfectionRepository.Get(a => a.ID == appUser.ID);
             appUser.CreatedDate = User.CreatedDate;
             appUser.ModifiedDate = DateTime.Now;
             appUser.Status = 2;
@@ -58,12 +58,10 @@ namespace Business.Services
         }
         public string Delete(ViralInfection appUser)
         {
-            var User = _viralInfectionRepository.Get(a => a.ID == appUser.ID);
-            appUser.CreatedDate = User.CreatedDate;
-            appUser.ModifiedDate = User.ModifiedDate;
-            appUser.DeletedDate = DateTime.Now;
-            appUser.Status = 3;
-            _viralInfectionRepository.Update(appUser);
+            var Data = _viralInfectionRepository.Get(a => a.ID == appUser.ID);
+            Data.DeletedDate = DateTime.Now;
+            Data.Status = 3;
+            _viralInfectionRepository.Delete(Data);
             return "Ok";
         }
 

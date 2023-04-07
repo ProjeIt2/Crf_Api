@@ -62,12 +62,10 @@ namespace Business.Services
         }
         public string Delete(Medicine appUser)
         {
-            var User = _medicineRepository.Get(a => a.ID == appUser.ID);
-            appUser.CreatedDate = User.CreatedDate;
-            appUser.ModifiedDate = User.ModifiedDate;
-            appUser.DeletedDate = DateTime.Now;
-            appUser.Status = 3;
-            _medicineRepository.Update(appUser);
+            var Data = _medicineRepository.Get(a => a.ID == appUser.ID);
+            Data.DeletedDate = DateTime.Now;
+            Data.Status = 3;
+            _medicineRepository.Delete(Data);
             return "Ok";
         }
 

@@ -29,7 +29,7 @@ namespace Business.Services
         }
         public List<Specimen> GetActives(int CompanyID)
         {
-            return _specimenRepository.GetList(x=>x.CompanyID==2 && x.Status != 3).ToList();
+            return _specimenRepository.GetList(x => x.CompanyID == 2 && x.Status != 3).ToList();
         }
         public List<SpecimenVM> GetListSpecimens(int FormID)
         {
@@ -42,9 +42,9 @@ namespace Business.Services
         }
         public Specimen GetActivesById(int id)
         {
-            return _specimenRepository.Get(x=>x.ID==id&&x.Status!=3);
+            return _specimenRepository.Get(x => x.ID == id && x.Status != 3);
         }
-  
+
         public string Add(Specimen appUser)
         {
             appUser.CreatedDate = DateTime.Now;
@@ -54,7 +54,7 @@ namespace Business.Services
         }
         public string Update(Specimen appUser)
         {
-            var User = _specimenRepository.Get(a => a.ID== appUser.ID);
+            var User = _specimenRepository.Get(a => a.ID == appUser.ID);
             appUser.CreatedDate = User.CreatedDate;
             appUser.ModifiedDate = DateTime.Now;
             appUser.Status = 2;
@@ -63,12 +63,10 @@ namespace Business.Services
         }
         public string Delete(Specimen appUser)
         {
-            var User = _specimenRepository.Get(a => a.ID == appUser.ID);
-            appUser.CreatedDate = User.CreatedDate;
-            appUser.ModifiedDate = User.ModifiedDate;
-            appUser.DeletedDate = DateTime.Now;
-            appUser.Status = 3;
-            _specimenRepository.Update(appUser);
+            var Data = _specimenRepository.Get(a => a.ID == appUser.ID);
+            Data.DeletedDate = DateTime.Now;
+            Data.Status = 3;
+            _specimenRepository.Delete(Data);
             return "Ok";
         }
 

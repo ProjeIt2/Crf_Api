@@ -63,7 +63,7 @@ namespace ProjeIt_Api.Controllers
             return Ok(_medicineService.Add(medicine));
         }
         [HttpPost("update")]
-        public IActionResult Update(Medicine medicine) 
+        public IActionResult Update(Medicine medicine)
         {
             var test = _medicineService.GetActivesById(medicine.ID);
 
@@ -76,13 +76,6 @@ namespace ProjeIt_Api.Controllers
         [HttpPost("delete")]
         public IActionResult Delete(Medicine medicine)
         {
-            var test = _medicineService.GetActivesById(medicine.ID);
-
-            medicine.ModifiedDate = test.ModifiedDate;
-            medicine.Status = 3;
-            medicine.CompanyID = test.CompanyID;
-            medicine.CreatedDate = test.CreatedDate;
-            medicine.DeletedDate = DateTime.Now;
             return Ok(_medicineService.Delete(medicine));
         }
     }

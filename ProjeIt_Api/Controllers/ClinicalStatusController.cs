@@ -34,7 +34,7 @@ namespace ProjeIt_Api.Controllers
         public IActionResult GetListClinicalStatuss(int FormID)
         {
             int CompanyID = 2;
-            var Test = _clinicalStatusService.GetList().Where(x=>x.FormID==FormID).ToList();
+            var Test = _clinicalStatusService.GetList().Where(x => x.FormID == FormID).ToList();
             return Ok(_clinicalStatusService.GetListClinicalStatuss(FormID, CompanyID));
 
         }
@@ -78,13 +78,6 @@ namespace ProjeIt_Api.Controllers
         [HttpPost("delete")]
         public IActionResult Delete(ClinicalStatus clinicalStatus)
         {
-            var test = _clinicalStatusService.GetActivesById(clinicalStatus.ID);
-
-            clinicalStatus.ModifiedDate = test.ModifiedDate;
-            clinicalStatus.Status = 3;
-            clinicalStatus.CompanyID = test.CompanyID;
-            clinicalStatus.CreatedDate = test.CreatedDate;
-            clinicalStatus.DeletedDate = DateTime.Now;
             return Ok(_clinicalStatusService.Delete(clinicalStatus));
         }
     }

@@ -76,14 +76,7 @@ namespace ProjeIt_Api.Controllers
         [HttpPost("delete")]
         public IActionResult Delete(Specimen specimen)
         {
-            var test = _specimenService.GetActivesById(specimen.ID);
-
-            specimen.ModifiedDate = test.ModifiedDate;
-            specimen.Status = 3;
-            specimen.CompanyID = test.CompanyID;
-            specimen.CreatedDate = test.CreatedDate;
-            specimen.DeletedDate = DateTime.Now;
-            return Ok(_specimenService.Delete(specimen));
+                       return Ok(_specimenService.Delete(specimen));
         }
     }
 }

@@ -76,14 +76,7 @@ namespace ProjeIt_Api.Controllers
         [HttpPost("delete")]
         public IActionResult Delete(TumorStatus tumorStatus)
         {
-            var test = _tumorStatusService.GetActivesById(tumorStatus.ID);
-
-            tumorStatus.ModifiedDate = test.ModifiedDate;
-            tumorStatus.Status = 3;
-            tumorStatus.CompanyID = test.CompanyID;
-            tumorStatus.CreatedDate = test.CreatedDate;
-            tumorStatus.DeletedDate = DateTime.Now;
-            return Ok(_tumorStatusService.Delete(tumorStatus));
+                     return Ok(_tumorStatusService.Delete(tumorStatus));
         }
     }
 }

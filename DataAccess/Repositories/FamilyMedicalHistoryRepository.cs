@@ -21,7 +21,7 @@ namespace DataAccess.Repositories
             var _result = new List<FamilyMedicalHistoryVM>();
             using (var context = new ProjeItContext())
             {
-                var result = (from _famMedHis in context.FamilyMedicalHistories.Where(x => x.FormID == FormID)
+                var result = (from _famMedHis in context.FamilyMedicalHistories.Where(x => x.FormID == FormID&&x.Status!=3)
                          join _form in context.Forms on _famMedHis.FormID equals _form.ID
                               join _diagHis in context.Diagnosis on _famMedHis.DiagnosisID equals _diagHis.ID
                               join _affStat in context.Affinities on _famMedHis.AffinityID equals _affStat.ID
@@ -30,6 +30,7 @@ namespace DataAccess.Repositories
                               {
                                   ID = _famMedHis.ID,
                                   FormID = _famMedHis.FormID,
+                                  Status= _famMedHis.Status,
                                   Barcode = _form.Barcode,
                                   DiagnosisHistoryDate = _famMedHis.DiagnosisDate,
                                   DiagnosisID = _diagHis.ID,

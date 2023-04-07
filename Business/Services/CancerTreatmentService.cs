@@ -29,7 +29,7 @@ namespace Business.Services
         }
         public List<CancerTreatment> GetActives(int CompanyID)
         {
-            return _cancerTreatmentRepository.GetList(x=>x.CompanyID==2 && x.Status != 3).ToList();
+            return _cancerTreatmentRepository.GetList(x => x.CompanyID == 2 && x.Status != 3).ToList();
         }
         public List<CancerTreatmentVM> GetListCancerTreatments(int FormID)
         {
@@ -41,9 +41,9 @@ namespace Business.Services
         }
         public CancerTreatment GetActivesById(int id)
         {
-            return _cancerTreatmentRepository.Get(x=>x.ID==id&&x.Status!=3);
+            return _cancerTreatmentRepository.Get(x => x.ID == id && x.Status != 3);
         }
-  
+
         public string Add(CancerTreatment appUser)
         {
             appUser.CreatedDate = DateTime.Now;
@@ -53,7 +53,7 @@ namespace Business.Services
         }
         public string Update(CancerTreatment appUser)
         {
-            var User = _cancerTreatmentRepository.Get(a => a.ID== appUser.ID);
+            var User = _cancerTreatmentRepository.Get(a => a.ID == appUser.ID);
             appUser.CreatedDate = User.CreatedDate;
             appUser.ModifiedDate = DateTime.Now;
             appUser.Status = 2;
@@ -62,12 +62,10 @@ namespace Business.Services
         }
         public string Delete(CancerTreatment appUser)
         {
-            var User = _cancerTreatmentRepository.Get(a => a.ID == appUser.ID);
-            appUser.CreatedDate = User.CreatedDate;
-            appUser.ModifiedDate = User.ModifiedDate;
-            appUser.DeletedDate = DateTime.Now;
-            appUser.Status = 3;
-            _cancerTreatmentRepository.Update(appUser);
+            var Data = _cancerTreatmentRepository.Get(a => a.ID == appUser.ID);
+            Data.DeletedDate = DateTime.Now;
+            Data.Status = 3;
+            _cancerTreatmentRepository.Delete(Data);
             return "Ok";
         }
 

@@ -19,6 +19,7 @@ namespace Entities.Dtos
         public string DiagnosisName { get; set; }
         public int AffinityID { get; set; }
         public string AffinityType { get; set; }
+        public int? Status { get; set; }
 
     }
 }

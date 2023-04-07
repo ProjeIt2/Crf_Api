@@ -71,13 +71,7 @@ namespace ProjeIt_Api.Controllers
         [HttpPost("delete")]
         public IActionResult Delete(FamilyMedicalHistory familyMedicalHistory)
         {
-        var test = _familyMedicalHistoryService.GetActivesById(familyMedicalHistory.ID);
-
-            familyMedicalHistory.ModifiedDate = test.ModifiedDate;
-            familyMedicalHistory.Status = 3;
-            familyMedicalHistory.CompanyID = test.CompanyID;
-            familyMedicalHistory.CreatedDate = test.CreatedDate;
-            familyMedicalHistory.DeletedDate = DateTime.Now;
+            
             return Ok(_familyMedicalHistoryService.Delete(familyMedicalHistory));
         }
     }

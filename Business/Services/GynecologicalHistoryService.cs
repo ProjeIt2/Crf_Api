@@ -56,11 +56,9 @@ namespace Business.Services
         public string Delete(GynecologicalHistory gynecologicalHistory)
         {
             var User = _gynecologicalHistoryRepository.Get(a => a.ID == gynecologicalHistory.ID);
-            gynecologicalHistory.CreatedDate = User.CreatedDate;
-            gynecologicalHistory.ModifiedDate = User.ModifiedDate;
-            gynecologicalHistory.DeletedDate = DateTime.Now;
-            gynecologicalHistory.Status = 3;
-            _gynecologicalHistoryRepository.Update(gynecologicalHistory);
+             User.DeletedDate = DateTime.Now;
+            User.Status = 3;
+            _gynecologicalHistoryRepository.Delete(User);
             return "Ok";
         }
 
