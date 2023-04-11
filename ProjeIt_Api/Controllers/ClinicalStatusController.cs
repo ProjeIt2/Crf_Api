@@ -31,7 +31,7 @@ namespace ProjeIt_Api.Controllers
         [HttpGet("getActives")]
         public IActionResult GetActives(int? CompanyID)
         {
-            CompanyID = 2;
+           
             return Ok(_clinicalStatusService.GetActives((int)CompanyID));
         }
         [HttpGet("getListClinicalStatuss")]
@@ -69,6 +69,7 @@ namespace ProjeIt_Api.Controllers
             clinicalStatus.CreatedDate = DateTime.Now;
             clinicalStatus.Status = 1;
             clinicalStatus.DoctorRequestedReportID = docdorreq.ID;
+            clinicalStatus.CompanyID = docdorreq.CompanyID;
             return Ok(_clinicalStatusService.Add(clinicalStatus));
         }
         [HttpPost("update")]

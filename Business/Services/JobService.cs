@@ -25,7 +25,11 @@ namespace Business.Services
         {
             return _jobRepository.GetList().ToList();
         }
-        public List<Job> GetActivesById(int CompanyID)
+        public Job GetActivesById(int id)
+        {
+            return _jobRepository.GetList(x => x.ID == id && x.Status != 3).FirstOrDefault();
+        }
+        public List<Job> GetActives(int CompanyID)
         {
             return _jobRepository.GetList(x => x.CompanyID == CompanyID && x.Status != 3).ToList();
         }

@@ -27,9 +27,13 @@ namespace Business.Services
         {
             return _projectInformationRepository.GetList().ToList();
         }
-        public List<ProjectInformation> GetActivesById(int CompanyID)
+        public ProjectInformation GetActivesById(int id)
         {
-            return _projectInformationRepository.GetList(x=>x.CompanyID==CompanyID&&x.Status!=3).ToList();
+            return _projectInformationRepository.GetList(x=>x.ID==id&&x.Status!=3).FirstOrDefault();
+        }
+        public List<ProjectInformation> GetActives(int CompanyID)
+        {
+            return _projectInformationRepository.GetList(x => x.CompanyID == CompanyID && x.Status != 3).ToList();
         }
         public string Add(ProjectInformation projectInformation)
         {

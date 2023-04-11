@@ -11,7 +11,8 @@ namespace Business.Services.Interfeces
     {
         Job GetById(int Id);
         List<Job> GetList();
-        List<Job> GetActivesById(int CompanyID);
+        Job GetActivesById(int id);
+        List<Job> GetActives(int CompanyID);
         string Add(Job job);
         string Update(Job job);
         string Delete(Job job);

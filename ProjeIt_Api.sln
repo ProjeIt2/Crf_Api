@@ -1,17 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.2.32526.322
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33027.164
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjeIt_Api", "ProjeIt_Api\ProjeIt_Api.csproj", "{E430BA84-BACC-40BC-A28F-475808BE521C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjeIt_Api", "ProjeIt_Api\ProjeIt_Api.csproj", "{E430BA84-BACC-40BC-A28F-475808BE521C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Business.csproj", "{E568B203-8568-4580-BF58-C1E980548B29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business", "Business\Business.csproj", "{E568B203-8568-4580-BF58-C1E980548B29}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{E0FE75E4-6A7F-47B6-A6EC-F32CAFA02CC6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{E0FE75E4-6A7F-47B6-A6EC-F32CAFA02CC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{49FC1B07-0A5B-4D59-80FA-41871ED8CC34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{49FC1B07-0A5B-4D59-80FA-41871ED8CC34}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{658472DD-4FCF-4AA3-AA8A-B315849B88F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entities.csproj", "{658472DD-4FCF-4AA3-AA8A-B315849B88F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -14,6 +14,6 @@ namespace Entities
         public DateTime? ModifiedDate { get; set; }
         public DateTime? DeletedDate { get; set; }
         public int Status { get; set; }
-        public int? CompanyID { get; set; }
+        public int CompanyID { get; set; }
     }
 }

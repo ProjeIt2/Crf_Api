@@ -25,16 +25,21 @@ namespace ProjeIt_Api.Controllers
             return Ok(_formService.GetList());
         }
         [HttpGet("GetListForms")]
-        public IActionResult GetListForms()
+        public IActionResult GetListForms(int CompanyID)
         {
 
-            return Ok(_formService.GetListForms());
+            return Ok(_formService.GetListForms(CompanyID));
 
         }
-        [HttpGet("GetActivesById")]
-        public IActionResult GetActivesById(int CompanyID)
+        [HttpGet("getActivesById")]
+        public IActionResult GetActivesById(int id)
         {
-            return Ok(_formService.GetById(CompanyID));
+            return Ok(_formService.GetActivesById(id));
+        }
+        [HttpGet("getActives")]
+        public IActionResult GetActives(int CompanyID)
+        {
+            return Ok(_formService.GetActives(CompanyID));
         }
         [HttpGet("getbyid")]
         public IActionResult GetById(int ID)
@@ -52,7 +57,7 @@ namespace ProjeIt_Api.Controllers
         [HttpPost("update")]
         public IActionResult Update(Form form)
         {
-            var test = _formService.GetActivesById(form.ID).FirstOrDefault();
+            var test = _formService.GetActivesById(form.ID);
 
             form.ModifiedDate = DateTime.Now;
             form.Status = 2;
@@ -63,7 +68,7 @@ namespace ProjeIt_Api.Controllers
         [HttpPost("delete")]
         public IActionResult Delete(Form form)
         {
-            var test = _formService.GetActivesById(form.ID).FirstOrDefault();
+            var test = _formService.GetActivesById(form.ID);
 
             form.ModifiedDate = test.ModifiedDate;
             form.Status = 3;

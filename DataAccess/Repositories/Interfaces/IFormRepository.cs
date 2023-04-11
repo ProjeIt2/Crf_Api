@@ -11,6 +11,6 @@ namespace DataAccess.Repositories.Interfaces
 {
     public interface IFormRepository : IEntityRepository<Form>
     {
-        List<FormListVM> GetListForms();
+        List<FormListVM> GetListForms(int CompanyID);
     }
 }

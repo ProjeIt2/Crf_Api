@@ -13,7 +13,8 @@ namespace Business.Services.Interfeces
         SocialLife GetById(int Id);
         SocialLife GetByFormId(int FormId);
         List<SocialLife> GetList();
-        List<SocialLife> GetActivesById(int CompanyID);
+        SocialLife GetActivesById(int id);
+        List<SocialLife> GetActives(int CompanyID);
         string Add(SocialLife socialLife);
         string Update(SocialLife socialLife);
         string Delete(SocialLife socialLife);

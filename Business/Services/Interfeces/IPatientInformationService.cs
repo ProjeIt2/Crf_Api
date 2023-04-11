@@ -13,7 +13,8 @@ namespace Business.Services.Interfeces
         PatientInformation GetById(int Id);
         PatientInformation GetByFormId(int FormId);
         List<PatientInformation> GetList();
-        List<PatientInformation> GetActivesById(int CompanyID);
+        PatientInformation GetActivesById(int id);
+        List<PatientInformation> GetActives(int CompanyID);
         string Add(PatientInformation patientInformation);
         string Update(PatientInformation patientInformation);
         string Delete(PatientInformation patientInformation);

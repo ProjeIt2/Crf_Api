@@ -15,12 +15,12 @@ namespace DataAccess.Repositories
     public class FormRepository : EntityRepositoryBase<Form, ProjeItContext>, IFormRepository
     {
    
-        public List<FormListVM> GetListForms()
+        public List<FormListVM> GetListForms(int CompanyID)
         {
             var _result = new List<FormListVM>();
             using (var context = new ProjeItContext())
             {
-                var result = (from _form in context.Forms
+                var result = (from _form in context.Forms.Where(x=>x.CompanyID== CompanyID&&x.Status!=3)
                               join _hospital in context.Hospitals on _form.HospitalID equals _hospital.ID
                               join _doctor in context.Doctors on _form.DoctorID equals _doctor.ID
                               join _personel in context.Personnels on _form.PersonnelID equals _personel.ID
@@ -30,6 +30,7 @@ namespace DataAccess.Repositories
                               {
                                   ID = _form.ID,
                                   Barcode = _form.Barcode,
+                                  CompanyID=_form.CompanyID,
                                   FormFullStatus = _form.FormFullStatus,
                                   CreatedDate = _form.CreatedDate,
                                   HospitalID = _hospital.ID,

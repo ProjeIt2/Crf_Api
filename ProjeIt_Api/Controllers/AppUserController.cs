@@ -27,7 +27,6 @@ namespace ProjeIt_Api.Controllers
         [HttpGet("Login")]
         public IActionResult Login(string UserName, string Password)
         {
-
             return Ok(_appUserService.Login(UserName, Password));
         }
 

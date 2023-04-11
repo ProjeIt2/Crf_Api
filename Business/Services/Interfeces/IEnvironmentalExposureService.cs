@@ -11,7 +11,8 @@ namespace Business.Services.Interfeces
     {
         EnvironmentalExposure GetById(int Id);
         List<EnvironmentalExposure> GetList();
-        List<EnvironmentalExposure> GetActivesById(int CompanyID);
+        List<EnvironmentalExposure> GetActives(int CompanyID);
+         EnvironmentalExposure GetActivesById(int id);
         string Add(EnvironmentalExposure environmentalExposure);
         string Update(EnvironmentalExposure environmentalExposure);
         string Delete(EnvironmentalExposure environmentalExposure);

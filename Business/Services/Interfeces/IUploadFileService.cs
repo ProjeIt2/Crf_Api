@@ -13,6 +13,8 @@ namespace Business.Services.Interfeces
         List<UploadFile> GetList();
         List<UploadFile> GetActives(int CompanyID);
         List<UploadFile> GetActivesFormID(int FormID);
+        List<UploadFile> GetFileNames(string FileName);
+       UploadFile GetFileName(string FileName);
         UploadFile GetActivesById(int id);
         string Add(UploadFile uploadFile);
         string Update(UploadFile uploadFile);

@@ -27,15 +27,18 @@ namespace Business.Services
         {
             return _kullaniciRepository.GetList().ToList();
         }
-        public List<FormListVM> GetListForms()
+        public List<FormListVM> GetListForms(int CompanyID)
         {
-            return new List<FormListVM>(_kullaniciRepository.GetListForms().ToList());
+            return new List<FormListVM>(_kullaniciRepository.GetListForms(CompanyID).ToList());
         }
-        public List<Form> GetActivesById(int CompanyID)
+        public Form GetActivesById(int id)
         {
-            return _kullaniciRepository.GetList(x=>x.CompanyID==CompanyID&&x.Status!=3).ToList();
+            return _kullaniciRepository.GetList(x=>x.ID==id&&x.Status!=3).FirstOrDefault();
         }
-  
+        public List<Form> GetActives(int CompanyID)
+        {
+            return _kullaniciRepository.GetList(x => x.CompanyID == CompanyID && x.Status != 3).ToList();
+        }
         public string Add(Form appUser)
         {
             appUser.CreatedDate = DateTime.Now;

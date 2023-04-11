@@ -24,9 +24,9 @@ namespace ProjeIt_Api.Controllers
             return Ok(_gynecologicalHistoryService.GetList());
         }
         [HttpGet("getActives")]
-        public IActionResult GetActives()
+        public IActionResult GetActives(int CompanyID)
         {
-            int CompanyID = 2;
+             
             return Ok(_gynecologicalHistoryService.GetActives(CompanyID));
         }
         [HttpGet("getActivesFormID")]

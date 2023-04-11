@@ -25,9 +25,9 @@ namespace Business.Services
         {
             return _diagnosisRepository.GetList().ToList();
         }
-        public List<Diagnosis> GetActives()
+        public List<Diagnosis> GetActives(int CompanyID)
         {
-            return _diagnosisRepository.GetList(x=>x.CompanyID==2 && x.Status != 3).ToList();
+            return _diagnosisRepository.GetList(x=>x.CompanyID== CompanyID && x.Status != 3).ToList();
         }
         public Diagnosis GetActivesById(int id)
         {

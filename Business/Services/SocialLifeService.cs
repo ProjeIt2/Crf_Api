@@ -32,9 +32,13 @@ namespace Business.Services
             return _socialLifeRepository.GetList().ToList();
         }
 
-        public List<SocialLife> GetActivesById(int CompanyID)
+        public SocialLife GetActivesById(int id)
         {
-            return _socialLifeRepository.GetList(x=>x.CompanyID==CompanyID&&x.Status!=3).ToList();
+            return _socialLifeRepository.GetList(x=>x.ID==id&&x.Status!=3).FirstOrDefault();
+        }
+        public List<SocialLife> GetActives(int CompanyID)
+        {
+            return _socialLifeRepository.GetList(x => x.CompanyID == CompanyID && x.Status != 3).ToList();
         }
         public string Add(SocialLife socialLife)
         {

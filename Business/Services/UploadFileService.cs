@@ -33,6 +33,14 @@ namespace Business.Services
         {
             return _uploadFileRepository.GetList(x => x.FormID == FormID && x.Status != 3).ToList();
         }
+        public List<UploadFile> GetFileNames(string FileName)
+        {
+            return _uploadFileRepository.GetList(x => x.UploadFileName == FileName && x.Status != 3).ToList();
+        }
+        public UploadFile GetFileName(string FileName)
+        {
+            return _uploadFileRepository.GetList(x => x.UploadFileName == FileName && x.Status != 3).FirstOrDefault();
+        }
         public UploadFile GetActivesById(int id)
         {
             return _uploadFileRepository.Get(x => x.ID == id && x.Status != 3);
@@ -68,5 +76,6 @@ namespace Business.Services
         {
             throw new NotImplementedException();
         }
+
     }
 }

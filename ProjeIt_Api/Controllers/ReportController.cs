@@ -24,15 +24,15 @@ namespace ProjeIt_Api.Controllers
             return Ok(_reportService.GetList());
         }
         [HttpGet("getActives")]
-        public IActionResult GetActives()
+        public IActionResult GetActives(int CompanyID)
         {
-            int CompanyID=2;
+           
             return Ok(_reportService.GetActives((int)CompanyID));
         }
         [HttpGet("getActivesById")]
-        public IActionResult GetActivesById(int CompanyID)
+        public IActionResult GetActivesById(int id)
         {
-            return Ok(_reportService.GetActivesById(CompanyID));
+            return Ok(_reportService.GetActivesById(id));
         }
         [HttpGet("getbyid")]
         public IActionResult GetById(int ID)

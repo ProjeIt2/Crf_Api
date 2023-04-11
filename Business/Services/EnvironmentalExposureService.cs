@@ -25,9 +25,13 @@ namespace Business.Services
         {
             return _environmentalExposureRepository.GetList().ToList();
         }
-        public List<EnvironmentalExposure> GetActivesById(int CompanyID)
+        public List<EnvironmentalExposure> GetActives(int CompanyID)
         {
             return _environmentalExposureRepository.GetList(x => x.CompanyID == CompanyID && x.Status != 3).ToList();
+        }
+        public EnvironmentalExposure GetActivesById(int id)
+        {
+            return _environmentalExposureRepository.GetList(x => x.ID == id && x.Status != 3).FirstOrDefault();
         }
         public string Add(EnvironmentalExposure environmentalExposure)
         {

@@ -15,8 +15,8 @@ namespace Entities
         public string UploadPath { get; set; }
            
         public int? FormID { get; set; }
-    
 
+        public string ImagePath { get; set; }
 
 
     }

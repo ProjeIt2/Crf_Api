@@ -12,7 +12,8 @@ namespace Business.Services.Interfeces
     {
         ClinicalDiagnosis GetById(int Id);
         List<ClinicalDiagnosis> GetList();
-        List<ClinicalDiagnosis> GetActivesById(int CompanyID);
+        ClinicalDiagnosis GetActivesById(int id);
+        List<ClinicalDiagnosis> GetActives(int CompanyID);
         string Add(ClinicalDiagnosis clinicalDiagnosis);
         string Update(ClinicalDiagnosis clinicalDiagnosis);
         string Delete(ClinicalDiagnosis clinicalDiagnosis);

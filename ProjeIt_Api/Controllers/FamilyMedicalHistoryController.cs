@@ -27,7 +27,7 @@ namespace ProjeIt_Api.Controllers
         [HttpGet("getActives")]
         public IActionResult GetActives(int? CompanyID)
         {
-            CompanyID = 2;
+           
             return Ok(_familyMedicalHistoryService.GetActives((int)CompanyID));
         }
         [HttpGet("getListFamilyMedicalHistorys")]

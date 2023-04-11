@@ -24,9 +24,14 @@ namespace ProjeIt_Api.Controllers
             return Ok(_environmentalExposureService.GetList());
         }
         [HttpGet("GetActivesById")]
-        public IActionResult GetActivesById(int CompanyID)
+        public IActionResult GetActivesById(int id)
         {
-            return Ok(_environmentalExposureService.GetById(CompanyID));
+            return Ok(_environmentalExposureService.GetActivesById(id));
+        }
+        [HttpGet("GetActives")]
+        public IActionResult GetActives(int CompanyID)
+        {
+            return Ok(_environmentalExposureService.GetActives(CompanyID));
         }
         [HttpGet("getbyid")]
         public IActionResult GetById(int ID)
@@ -44,7 +49,7 @@ namespace ProjeIt_Api.Controllers
         [HttpPost("update")]
         public IActionResult Update(EnvironmentalExposure environmentalExposure)
         {
-            var test = _environmentalExposureService.GetActivesById(environmentalExposure.ID).FirstOrDefault();
+            var test = _environmentalExposureService.GetActivesById(environmentalExposure.ID);
 
             environmentalExposure.ModifiedDate = DateTime.Now;
             environmentalExposure.Status = 2;
@@ -55,7 +60,7 @@ namespace ProjeIt_Api.Controllers
         [HttpPost("delete")]
         public IActionResult Delete(EnvironmentalExposure environmentalExposure)
         {
-            var test = _environmentalExposureService.GetActivesById(environmentalExposure.ID).FirstOrDefault();
+            var test = _environmentalExposureService.GetActivesById(environmentalExposure.ID);
 
             environmentalExposure.ModifiedDate = test.ModifiedDate;
             environmentalExposure.Status = 3;

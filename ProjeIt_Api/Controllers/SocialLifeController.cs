@@ -25,9 +25,14 @@ namespace ProjeIt_Api.Controllers
             return Ok(_socialLifeService.GetList());
         }
         [HttpGet("GetActivesById")]
-        public IActionResult GetActivesById(int CompanyID)
+        public IActionResult GetActivesById(int id)
         {
-            return Ok(_socialLifeService.GetActivesById(CompanyID));
+            return Ok(_socialLifeService.GetActivesById(id));
+        }
+        [HttpGet("GetActives")]
+        public IActionResult GetActives(int CompanyID)
+        {
+            return Ok(_socialLifeService.GetActives(CompanyID));
         }
         [HttpGet("getbyid")]
         public IActionResult GetById(int ID)

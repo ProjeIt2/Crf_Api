@@ -12,8 +12,9 @@ namespace Business.Services.Interfeces
     {
         Form GetById(int Id);
         List<Form> GetList();
-        List<Form> GetActivesById(int CompanyID);
-        List<FormListVM> GetListForms();
+       Form GetActivesById(int id);
+        List<Form> GetActives(int CompanyID);
+        List<FormListVM> GetListForms(int CompanyID);
         string Add(Form kullanici);
         string Update(Form kullanici);
         string Delete(Form kullanici);

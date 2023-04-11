@@ -24,9 +24,14 @@ namespace ProjeIt_Api.Controllers
             return Ok(_jobService.GetList());
         }
         [HttpGet("GetActivesById")]
-        public IActionResult GetActivesById(int CompanyID)
+        public IActionResult GetActivesById(int id)
         {
-            return Ok(_jobService.GetById(CompanyID));
+            return Ok(_jobService.GetActivesById(id));
+        }
+        [HttpGet("GetActives")]
+        public IActionResult GetActives(int CompanyID)
+        {
+            return Ok(_jobService.GetActives(CompanyID));
         }
         [HttpGet("getbyid")]
         public IActionResult GetById(int ID)
@@ -44,7 +49,7 @@ namespace ProjeIt_Api.Controllers
         [HttpPost("update")]
         public IActionResult Update(Job job)
         {
-            var test = _jobService.GetActivesById(job.ID).FirstOrDefault();
+            var test = _jobService.GetActivesById(job.ID);
 
             job.ModifiedDate = DateTime.Now;
             job.Status = 2;
@@ -55,7 +60,7 @@ namespace ProjeIt_Api.Controllers
         [HttpPost("delete")]
         public IActionResult Delete(Job job)
         {
-            var test = _jobService.GetActivesById(job.ID).FirstOrDefault();
+            var test = _jobService.GetActivesById(job.ID);
 
             job.ModifiedDate = test.ModifiedDate;
             job.Status = 3;

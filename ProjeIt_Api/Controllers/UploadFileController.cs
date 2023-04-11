@@ -27,9 +27,9 @@ namespace ProjeIt_Api.Controllers
             return Ok(_uploadFileService.GetList());
         }
         [HttpGet("getActives")]
-        public IActionResult GetActives()
+        public IActionResult GetActives(int CompanyID)
         {
-            int CompanyID = 2;
+
             return Ok(_uploadFileService.GetActives((int)CompanyID));
         }
 
@@ -38,6 +38,19 @@ namespace ProjeIt_Api.Controllers
         {
 
             return Ok(_uploadFileService.GetActivesFormID((int)FormID));
+        }
+        [HttpGet("getFileNames")]
+        public IActionResult GetFileNames(string FileName)
+        {
+
+            return Ok(_uploadFileService.GetFileNames(FileName));
+        }
+
+        [HttpGet("getFileName")]
+        public IActionResult GetFileName(string FileName)
+        {
+
+            return Ok(_uploadFileService.GetFileName(FileName));
         }
         [HttpGet("getActivesById")]
         public IActionResult GetActivesById(int CompanyID)
@@ -49,24 +62,54 @@ namespace ProjeIt_Api.Controllers
         {
             return Ok(_uploadFileService.GetById(ID));
         }
- 
-        [HttpPatch("add")]
-        public IActionResult Add( [FromForm] UploadFileVM uploadFile
-                                  //IFormFile formFile, int formId
+        private const string ContentType = "application/octet-stream";
+        [HttpGet("dowloand")]
+        public IActionResult Download(string filename)
+        {
+            string filePath = Path.Combine(Directory.GetCurrentDirectory(), "UploadFile", filename);
+            var file = _uploadFileService.GetList().Where(x => x.UploadFileName == filename).FirstOrDefault();
+            //var filePath = Path.Combine("UploadFile", filename);
+            //var filePath = file.UploadPath;
+            if (!System.IO.File.Exists(filePath))
+            {
+                return NotFound();
+            }
+
+            var fileStream = System.IO.File.OpenRead(filePath);
+            var fileInfo = new FileInfo(filePath);
+            var response = new FileStreamResult(fileStream, ContentType)
+            {
+                FileDownloadName = fileInfo.Name
+            };
+            return response;
+        }
+        [HttpGet("GetFileWithName")]
+        public IActionResult GetFileWithName(string filename)
+        {
+            var file = _uploadFileService.GetList().Where(x => x.UploadFileName == filename).FirstOrDefault();
+            if (!System.IO.File.Exists(file.UploadPath))
+            {
+                return NotFound();
+            }
+            var stream = new FileStream(file.UploadPath, FileMode.Open);
+            return new FileStreamResult(stream, "application/pdf");
+        }
+        [HttpPost("add")]
+        public IActionResult Add([FromForm] UploadFileVM uploadFile
+            //IFormFile formFile, int formId
             )
         {
             var UF = new UploadFile();
-
             if (uploadFile.FilePickerResults != null)
             {
-               
 
                 string path = Path.Combine(Directory.GetCurrentDirectory(), "UploadFile", uploadFile.FilePickerResults.FileName);
+                //string path = Path.Combine(Directory.GetCurrentDirectory(), "UploadFile", uploadFile.imagePath);
                 using (Stream stream = new FileStream(path, FileMode.Create))
                 {
                     uploadFile.FilePickerResults.CopyTo(stream);
                 }
-               
+                //UF.FormID = Convert.ToInt32(uploadFile.FilePickerResults.FileName);
                 UF.FormID = uploadFile.FormID;
                 UF.CreatedDate = DateTime.Now;
                 UF.Status = 1;
@@ -74,7 +117,7 @@ namespace ProjeIt_Api.Controllers
                 UF.UploadFileName = uploadFile.FilePickerResults.FileName;
                 UF.UploadPath = path;
             }
-            else if(uploadFile.imageItem != null)
+            else if (uploadFile.imageItem != null)
             {
 
                 string path = Path.Combine(Directory.GetCurrentDirectory(), "UploadFile", uploadFile.imageItem.FileName);
@@ -94,7 +137,7 @@ namespace ProjeIt_Api.Controllers
             {
                 return BadRequest("File not found");
             }
-        
+
             return Ok(_uploadFileService.Add(UF));
         }
         [HttpPost("update")]

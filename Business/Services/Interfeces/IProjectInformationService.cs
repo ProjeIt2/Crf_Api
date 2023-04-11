@@ -12,8 +12,8 @@ namespace Business.Services.Interfeces
     {
         ProjectInformation GetById(int Id);
         List<ProjectInformation> GetList();
-        List<ProjectInformation> GetActivesById(int CompanyID);
-      
+        ProjectInformation GetActivesById(int id);
+        List<ProjectInformation> GetActives(int CompanyID);
         string Add(ProjectInformation projectInformation);
         string Update(ProjectInformation projectInformation);
         string Delete(ProjectInformation projectInformation);

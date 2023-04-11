@@ -27,7 +27,12 @@ namespace ProjeIt_Api.Controllers
         [HttpGet("GetActivesById")]
         public IActionResult GetActivesById(int id)
         {
-            return Ok(_clinicalDiagnosisService.GetById(id));
+            return Ok(_clinicalDiagnosisService.GetActivesById(id));
+        }
+        [HttpGet("GetActives")]
+        public IActionResult GetActives(int CompanyID)
+        {
+            return Ok(_clinicalDiagnosisService.GetActives(CompanyID));
         }
         [HttpGet("getbyid")]
         public IActionResult GetById(int ID)
@@ -45,7 +50,7 @@ namespace ProjeIt_Api.Controllers
         [HttpPost("update")]
         public IActionResult Update(ClinicalDiagnosis clinicalDiagnosis)
         {
-            var test = _clinicalDiagnosisService.GetActivesById(clinicalDiagnosis.ID).FirstOrDefault();
+            var test = _clinicalDiagnosisService.GetActivesById(clinicalDiagnosis.ID);
 
             clinicalDiagnosis.ModifiedDate = DateTime.Now;
             clinicalDiagnosis.Status = 2;
@@ -56,7 +61,7 @@ namespace ProjeIt_Api.Controllers
         [HttpPost("delete")]
         public IActionResult Delete(ClinicalDiagnosis clinicalDiagnosis)
         {
-            var test = _clinicalDiagnosisService.GetActivesById(clinicalDiagnosis.ID).FirstOrDefault();
+            var test = _clinicalDiagnosisService.GetActivesById(clinicalDiagnosis.ID);
 
             clinicalDiagnosis.ModifiedDate = test.ModifiedDate;
             clinicalDiagnosis.Status = 3;
@@ -64,7 +69,7 @@ namespace ProjeIt_Api.Controllers
             clinicalDiagnosis.CreatedDate = test.CreatedDate;
             clinicalDiagnosis.DeletedDate = DateTime.Now;
             return Ok(_clinicalDiagnosisService.Delete(clinicalDiagnosis));
-            return Ok(_clinicalDiagnosisService.Delete(clinicalDiagnosis));
+   
         }
     }
 }

@@ -24,9 +24,9 @@ namespace ProjeIt_Api.Controllers
             return Ok(_affinityService.GetList());
         }
         [HttpGet("getActives")]
-        public IActionResult GetActives()
+        public IActionResult GetActives(int CompanyID)
         {
-            int CompanyID=2;
+         
             return Ok(_affinityService.GetActives((int)CompanyID));
         }
         [HttpGet("getActivesById")]

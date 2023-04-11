@@ -31,8 +31,11 @@ namespace Business.Services
         {
             return _patientInformationRepository.GetList().ToList();
         }
-
-        public List<PatientInformation> GetActivesById(int CompanyID)
+        public PatientInformation GetActivesById(int id)
+        {
+            return _patientInformationRepository.GetList(x => x.ID == id && x.Status != 3).FirstOrDefault();
+        }
+        public List<PatientInformation> GetActives(int CompanyID)
         {
             return _patientInformationRepository.GetList(x=>x.CompanyID==CompanyID&&x.Status!=3).ToList();
         }

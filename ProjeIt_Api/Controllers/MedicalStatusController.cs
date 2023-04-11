@@ -24,9 +24,9 @@ namespace ProjeIt_Api.Controllers
             return Ok(_medicalStatusService.GetList());
         }
         [HttpGet("getActives")]
-        public IActionResult GetActives()
+        public IActionResult GetActives(int CompanyID)
         {
-            int CompanyID = 2;
+           
             return Ok(_medicalStatusService.GetActives(CompanyID));
         }
         [HttpGet("GetActivesById")]

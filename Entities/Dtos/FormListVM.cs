@@ -25,6 +25,7 @@ using System.Threading.Tasks;
         public string ProjectName { get; set; }
         public int DoctorID { get; set; }
         public string DoctorFullName { get; set; }
+        public int CompanyID { get; set; }
 
     }
 }
