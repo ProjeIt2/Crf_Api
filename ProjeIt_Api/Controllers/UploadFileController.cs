@@ -102,8 +102,8 @@ namespace ProjeIt_Api.Controllers
             var UF = new UploadFile();
             if (uploadFile.FilePickerResults != null)
             {
-
-                string path = Path.Combine(Directory.GetCurrentDirectory(), "UploadFile", uploadFile.FilePickerResults.FileName);
+                var guid = Guid.NewGuid().ToString();
+                string path = Path.Combine(Directory.GetCurrentDirectory(), "UploadFile", guid+".pdf");
                 //string path = Path.Combine(Directory.GetCurrentDirectory(), "UploadFile", uploadFile.imagePath);
                 using (Stream stream = new FileStream(path, FileMode.Create))
                 {
@@ -114,13 +114,13 @@ namespace ProjeIt_Api.Controllers
                 UF.CreatedDate = DateTime.Now;
                 UF.Status = 1;
                 UF.CompanyID = 2;
-                UF.UploadFileName = uploadFile.FilePickerResults.FileName;
+                UF.UploadFileName =  guid+".pdf" ;
                 UF.UploadPath = path;
             }
             else if (uploadFile.imageItem != null)
             {
-
-                string path = Path.Combine(Directory.GetCurrentDirectory(), "UploadFile", uploadFile.imageItem.FileName);
+                var guid = Guid.NewGuid().ToString();
+                string path = Path.Combine(Directory.GetCurrentDirectory(), "UploadFile", guid + ".pdf");
                 using (Stream stream = new FileStream(path, FileMode.Create))
                 {
                     uploadFile.imageItem.CopyTo(stream);
@@ -130,7 +130,7 @@ namespace ProjeIt_Api.Controllers
                 UF.CreatedDate = DateTime.Now;
                 UF.Status = 1;
                 UF.CompanyID = 2;
-                UF.UploadFileName = uploadFile.imageItem.FileName;
+                UF.UploadFileName = guid ;
                 UF.UploadPath = path;
             }
             else
