@@ -13,7 +13,9 @@ namespace DataAccess.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(connectionString: @"Data Source=94.73.170.34;Initial Catalog=u0993226_dbD8A;uid=u0993226_userD8A;pwd=Crf.Digital134!!;Integrated Security=false;MultipleActiveResultSets=True;");
+            //optionsBuilder.UseSqlServer(connectionString: @"Data Source=94.73.170.34;Initial Catalog=u0993226_dbD8A;uid=u0993226_userD8A;pwd=Crf.Digital134!!;Integrated Security=false;MultipleActiveResultSets=True;");
+
+            optionsBuilder.UseSqlServer(connectionString: @"Data Source=94.73.170.45;Initial Catalog=u9916590_db588;uid=u9916590_user588;pwd=Crf.Digital134!!;Integrated Security=false;MultipleActiveResultSets=True;");
         }
 
 
@@ -60,9 +62,9 @@ namespace DataAccess.Context
         public DbSet<DoctorRequestedReport> DoctorRequestedReports { get; set; }
         public DbSet<ClinicalStatus> ClinicalStatus { get; set; }
         public DbSet<Report> Reports { get; set; }
-        public DbSet<Metastasis> Metastasises { get; set; }
+        public DbSet<Metastasis> Metastasis { get; set; }
         public DbSet<LymphNode> LymphNodes { get; set; }
-        public DbSet<DistantMetastasis> DistantMetastases { get; set; }
+        public DbSet<DistantMetastasis> DistantMetastasis { get; set; }
         public DbSet<MetastasisStatus> MetastasisStatus { get; set; }
         public DbSet<Treatment> Treatments { get; set; }
         public DbSet<CancerTreatment> CancerTreatments { get; set; }
@@ -70,7 +72,9 @@ namespace DataAccess.Context
         public DbSet<UploadFilesPatientICF> UploadFilesPatientICFs { get; set; }
         public DbSet<AdditionalInformation> AdditionalInformations { get; set; }
         public DbSet<ContactUs> ContactUses { get; set; }
-
+        public DbSet<Daily> Dailies { get; set; }
+        public DbSet<BranchName> BranchNames { get; set; }
+        public DbSet<TaskUploadFile> TaskUploadFiles { get; set; }
         //public DbSet<FormListVM> FormVMQuery { get; set; }
 
     }

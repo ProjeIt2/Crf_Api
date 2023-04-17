@@ -13,9 +13,11 @@ namespace ProjeIt_Api.Controllers
     public class DoctorRequestedReportController : Controller
     {
         private readonly IDoctorRequestedReportService _doctorRequestedReportService;
-        public DoctorRequestedReportController(IDoctorRequestedReportService doctorRequestedReportService)
+        private readonly IFormService _formService;
+        public DoctorRequestedReportController(IDoctorRequestedReportService doctorRequestedReportService, IFormService formService)
         {
             _doctorRequestedReportService = doctorRequestedReportService;
+            _formService= formService;
         }
 
         [HttpGet("getall")]
@@ -30,10 +32,10 @@ namespace ProjeIt_Api.Controllers
             return Ok(_doctorRequestedReportService.GetActives((int)CompanyID));
         }
         [HttpGet("getProjectID")]
-        public IActionResult GetProjectID(int ProjectID)
+        public IActionResult GetProjectID(int FormID)
         {
-        
-            return Ok(_doctorRequestedReportService.GetProjectID((int)ProjectID));
+            var form = _formService.GetActivesById(FormID);
+            return Ok(_doctorRequestedReportService.GetProjectID((int)form.ProjectInformationID));
         }
         [HttpGet("getActivesById")]
         public IActionResult GetActivesById(int CompanyID)

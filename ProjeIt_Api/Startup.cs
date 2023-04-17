@@ -144,6 +144,12 @@ namespace ProjeIt_Api
             services.AddScoped<IAdditionalInformationService, AdditionalInformationService>();
             services.AddScoped<IContactUsRepository, ContactUsRepository>();
             services.AddScoped<IContactUsService, ContactUsService>();
+            services.AddScoped<IDailyRepository, DailyRepository>();
+            services.AddScoped<IDailyService, DailyService>();
+            services.AddScoped<IBranchNameRepository, BranchNameRepository>();
+            services.AddScoped<IBranchNameService, BranchNameService>();
+            services.AddScoped<ITaskUploadFileRepository, TaskUploadFileRepository>();
+            services.AddScoped<ITaskUploadFileService, TaskUploadFileService>();
             #endregion
         }
 

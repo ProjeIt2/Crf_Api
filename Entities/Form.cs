@@ -15,7 +15,7 @@ namespace Entities
         public int? PersonnelID { get; set; }
         public int? DoctorID { get; set; }
         public int? ProjectInformationID { get; set; }
-        public int? PatientInformationID { get; set; }
+        //public int? PatientInformationID { get; set; }
         public bool? FormStatus { get; set; }
         public bool? Situation { get; set; }
         public int? ClinicalDiagnosisID { get; set; }

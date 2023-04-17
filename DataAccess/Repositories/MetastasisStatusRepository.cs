@@ -23,9 +23,9 @@ namespace DataAccess.Repositories
             {
                 var result = (from _metasStat in context.MetastasisStatus.Where(x => x.FormID == FormID&&x.Status!=3)
                               join _form in context.Forms on _metasStat.FormID equals _form.ID
-                              join _metastasis in context.Metastasises on _metasStat.MetastasisID equals _metastasis.ID
+                              join _metastasis in context.Metastasis on _metasStat.MetastasisID equals _metastasis.ID
                               join _lymphNode in context.LymphNodes on _metasStat.LymphNodeID equals _lymphNode.ID
-                              join _distMet in context.DistantMetastases on _metasStat.DistantMetastasisID equals _distMet.ID
+                              join _distMet in context.DistantMetastasis on _metasStat.DistantMetastasisID equals _distMet.ID
                               select new MetastasisStatusVM
                               {
                                   ID = _metasStat.ID,
@@ -57,9 +57,9 @@ namespace DataAccess.Repositories
             {
                 var result = (from _metasStat in context.MetastasisStatus.Where(x => x.ID == id)
                               join _form in context.Forms on _metasStat.FormID equals _form.ID
-                              join _metastasis in context.Metastasises on _metasStat.MetastasisID equals _metastasis.ID
+                              join _metastasis in context.Metastasis on _metasStat.MetastasisID equals _metastasis.ID
                               join _lymphNode in context.LymphNodes on _metasStat.LymphNodeID equals _lymphNode.ID
-                              join _distMet in context.DistantMetastases on _metasStat.DistantMetastasisID equals _distMet.ID
+                              join _distMet in context.DistantMetastasis on _metasStat.DistantMetastasisID equals _distMet.ID
                               select new MetastasisStatusVM
                               {
                                   ID = _metasStat.ID,

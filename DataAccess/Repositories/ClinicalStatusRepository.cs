@@ -16,12 +16,12 @@ namespace DataAccess.Repositories
     public class ClinicalStatusRepository : EntityRepositoryBase<ClinicalStatus, ProjeItContext>, IClinicalStatusRepository
     {
 
-        public List<ClinicalStatusVM> GetListClinicalStatuss(int FormID,int CompanyID)
+        public List<ClinicalStatusVM> GetListClinicalStatuss(int FormID)
         {
             var _result = new List<ClinicalStatusVM>();
             using (var context = new ProjeItContext())
             {
-                var result = (from _clinStat in context.ClinicalStatus.Where(x => x.FormID == FormID&&x.CompanyID==CompanyID&&x.Status!=3)
+                var result = (from _clinStat in context.ClinicalStatus.Where(x => x.FormID == FormID&&x.Status!=3)
                               join _form in context.Forms on _clinStat.FormID equals _form.ID
                               join _tumArea in context.TumorAreas on _clinStat.TumorAreaID equals _tumArea.ID
                               join _tnm in context.TNMs on _clinStat.TNMID equals _tnm.ID
@@ -56,12 +56,12 @@ namespace DataAccess.Repositories
         }
 
 
-        public ClinicalStatusVM GetListClinicalStatu(int id, int CompanyID)
+        public ClinicalStatusVM GetListClinicalStatu(int id)
         {
             var _result = new ClinicalStatusVM();
             using (var context = new ProjeItContext())
             {
-                var result = (from _clinStat in context.ClinicalStatus.Where(x => x.ID == id && x.CompanyID == CompanyID && x.Status != 3)
+                var result = (from _clinStat in context.ClinicalStatus.Where(x => x.ID == id && x.Status != 3)
                               join _form in context.Forms on _clinStat.FormID equals _form.ID
                               join _tumArea in context.TumorAreas on _clinStat.TumorAreaID equals _tumArea.ID
                               join _tnm in context.TNMs on _clinStat.TNMID equals _tnm.ID

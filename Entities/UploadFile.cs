@@ -16,7 +16,7 @@ namespace Entities
            
         public int? FormID { get; set; }
 
-        public string ImagePath { get; set; }
+        //public string ImagePath { get; set; }
 
 
     }

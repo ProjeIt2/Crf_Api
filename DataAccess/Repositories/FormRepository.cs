@@ -30,7 +30,7 @@ namespace DataAccess.Repositories
                               {
                                   ID = _form.ID,
                                   Barcode = _form.Barcode,
-                                  CompanyID=_form.CompanyID,
+                                  CompanyID=(int)_form.CompanyID,
                                   FormFullStatus = _form.FormFullStatus,
                                   CreatedDate = _form.CreatedDate,
                                   HospitalID = _hospital.ID,

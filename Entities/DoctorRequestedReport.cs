@@ -11,5 +11,6 @@ namespace Entities
         public int? Piece { get; set; }
         public int? ProjectInformationID { get; set; }
         public int? ReportID { get; set; }
+        public string ReportName { get; set; }
     }
 }

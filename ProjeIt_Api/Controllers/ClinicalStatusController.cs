@@ -37,17 +37,17 @@ namespace ProjeIt_Api.Controllers
         [HttpGet("getListClinicalStatuss")]
         public IActionResult GetListClinicalStatuss(int FormID)
         {
-            int CompanyID = 2;
-            var Test = _clinicalStatusService.GetList().Where(x => x.FormID == FormID).ToList();
-            return Ok(_clinicalStatusService.GetListClinicalStatuss(FormID, CompanyID));
+         
+            //var Test = _clinicalStatusService.GetList().Where(x => x.FormID == FormID).ToList();
+            return Ok(_clinicalStatusService.GetListClinicalStatuss(FormID));
 
         }
         [HttpGet("getListClinicalStatu")]
         public IActionResult GetListClinicalStatu(int id)
         {
-            int CompanyID = 2;
+     
             //var Test = _clinicalStatusService.GetList().Where(x => x.FormID == id).ToList();
-            return Ok(_clinicalStatusService.GetListClinicalStatu(id, CompanyID));
+            return Ok(_clinicalStatusService.GetListClinicalStatu(id));
 
         }
         [HttpGet("getActivesById")]
@@ -63,13 +63,14 @@ namespace ProjeIt_Api.Controllers
 
         [HttpPost("add")]
         public IActionResult Add(ClinicalStatus clinicalStatus)
-        {//project ID Yakalamak için FormID verileri çekildi
-            var form = _formService.GetById((int)clinicalStatus.FormID);
-            var docdorreq = _doctorRequestedReportService.GetList().Where(x => x.ProjectInformationID == form.ProjectInformationID && x.ReportID == clinicalStatus.DoctorRequestedReportID).FirstOrDefault();
+        {
+            //project ID Yakalamak için FormID verileri çekildi
+            //var form = _formService.GetById((int)clinicalStatus.FormID);
+            //var docdorreq = _doctorRequestedReportService.GetList().Where(x => x.ProjectInformationID == form.ProjectInformationID && x.ReportID == clinicalStatus.DoctorRequestedReportID).FirstOrDefault();
             clinicalStatus.CreatedDate = DateTime.Now;
             clinicalStatus.Status = 1;
-            clinicalStatus.DoctorRequestedReportID = docdorreq.ID;
-            clinicalStatus.CompanyID = docdorreq.CompanyID;
+            //clinicalStatus.DoctorRequestedReportID = docdorreq.ID;
+            //clinicalStatus.CompanyID = docdorreq.CompanyID;
             return Ok(_clinicalStatusService.Add(clinicalStatus));
         }
         [HttpPost("update")]

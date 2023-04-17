@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace Entities.Dtos
 {
-  public  class UploadFileVM
+   public class TaskUploadFielVM
     {
-        public string imagePath;
 
-        public int? FormID { get; set; }
+        public string UploadFileName { get; set; }
+        public int? TaskSystemID { get; set; }
         public IFormFile? FilePickerResults { get; set; }
         //public string imagePath { get; set; }
         //public IFormFile? imageItem { get; set; }
-        public string ImagePath { get; set; }
+        public string UploadPath { get; set; }
     }
 }

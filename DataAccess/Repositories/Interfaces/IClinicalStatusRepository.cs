@@ -11,7 +11,7 @@ namespace DataAccess.Repositories.Interfaces
 {
     public interface IClinicalStatusRepository : IEntityRepository<ClinicalStatus>
     {
-        List<ClinicalStatusVM> GetListClinicalStatuss(int FormID, int CompanyID);
-       ClinicalStatusVM GetListClinicalStatu(int id, int CompanyID);
+        List<ClinicalStatusVM> GetListClinicalStatuss(int FormID);
+       ClinicalStatusVM GetListClinicalStatu(int id);
     }
 }
