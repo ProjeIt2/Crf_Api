@@ -13,9 +13,11 @@ namespace ProjeIt_Api.Controllers
     public class DailyController : Controller
     {
         private readonly IDailyService _dailyService;
-        public DailyController(IDailyService dailyService)
+        private readonly IPersonnelService _personnelService;
+        public DailyController(IDailyService dailyService, IPersonnelService personnelService)
         {
             _dailyService = dailyService;
+            _personnelService = personnelService;
         }
 
         [HttpGet("getall")]
@@ -40,6 +42,12 @@ namespace ProjeIt_Api.Controllers
 
             return Ok(_dailyService.GetDailyMyVisite(PersonnelID));
         }
+        [HttpGet("getDailyVisite")]
+        public IActionResult GetDailyVisite(int PersonnelID)
+        {
+
+            return Ok(_dailyService.GetDailyVisite(PersonnelID));
+        }
         [HttpGet("getbyid")]
         public IActionResult GetById(int ID)
         {
@@ -49,7 +57,11 @@ namespace ProjeIt_Api.Controllers
         [HttpPost("add")]
         public IActionResult Add(Daily daily)
         {
+            var user = _personnelService.GetActivesById((int)daily.SenderID);
+            var pers = _personnelService.GetById((int)daily.SenderID);
+            daily.SenderName = user.FirstName + " " + user.LastName;
             daily.CreatedDate = DateTime.Now;
+            daily.VisiteStatus = true;
             daily.Status = 1;
             return Ok(_dailyService.Add(daily));
         }

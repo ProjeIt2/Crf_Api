@@ -33,6 +33,10 @@ namespace Business.Services
         {
             return _dailyRepository.GetList(x => x.PersonelID==PersonnelID&&x.SelectLabel== "VisitePlan" && x.Status != 3).ToList();
         }
+        public List<Daily> GetDailyVisite(int PersonnelID)
+        {
+            return _dailyRepository.GetList(x => x.SenderID == PersonnelID && x.SelectLabel == "VisitePlan" && x.Status != 3).ToList();
+        }
         public Daily GetActivesById(int id)
         {
             return _dailyRepository.Get(x => x.ID == id && x.Status != 3);

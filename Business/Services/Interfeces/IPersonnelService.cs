@@ -12,8 +12,8 @@ namespace Business.Services.Interfeces
     {
         Personnel GetById(int Id);
         List<Personnel> GetList();
-        List<Personnel> GetActivesById(int CompanyID);
-      
+        Personnel GetActivesById(int ID);
+        List<Personnel> GetActives(int CompanyID);
         string Add(Personnel personnel);
         string Update(Personnel personnel);
         string Delete(Personnel personnel);

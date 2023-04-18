@@ -14,6 +14,7 @@ namespace Business.Services.Interfeces
         List<Daily> GetActives(int CompanyID);
         Daily GetActivesById(int id);
         List<Daily> GetDailyMyVisite( int PersonnelID);
+        List<Daily> GetDailyVisite(int PersonnelID);
         string Add(Daily daily);
         string Update(Daily daily);
         string Delete(Daily daily);

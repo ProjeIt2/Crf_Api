@@ -12,8 +12,8 @@ namespace Entities
         public string Description { get; set; }
         public int? PersonelID { get; set; }
         public bool? TemporaryDuty { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
         //public string StartTime { get; set; }
         public int? SenderID { get; set; }
         public string SenderName { get; set; }
@@ -29,5 +29,7 @@ namespace Entities
      public string MadeStatus { get; set; }
         public string Longitude { get; set; }
         public string Latitude { get; set; }
+        public string Email { get; set; }
+        public string Phone { get; set; }
     }
 }

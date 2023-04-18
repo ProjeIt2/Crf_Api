@@ -27,9 +27,13 @@ namespace Business.Services
         {
             return _personnelRepository.GetList().ToList();
         }
-        public List<Personnel> GetActivesById(int CompanyID)
+        public Personnel GetActivesById(int ID)
         {
-            return _personnelRepository.GetList(x=>x.CompanyID==CompanyID&&x.Status!=3).ToList();
+            return _personnelRepository.GetList(x=>x.ID==ID&&x.Status!=3).FirstOrDefault();
+        }
+        public List<Personnel> GetActives(int CompanyID)
+        {
+            return _personnelRepository.GetList(x => x.CompanyID == CompanyID && x.Status != 3).ToList();
         }
         public string Add(Personnel personnel)
         {
